@@ -1,0 +1,13 @@
+<?php
+$NAMESPACE$
+
+use App\Infrastructure\Constants\TextCodeConstant;
+
+/**
+ * @Class $DOMAIN$TextConstant
+ * @package $ROOT_NAMESPACE$
+ */
+class $DOMAIN$TextConstant extends TextCodeConstant
+{
+
+}

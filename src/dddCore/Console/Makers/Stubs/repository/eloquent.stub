@@ -1,0 +1,21 @@
+<?php
+$NAMESPACE$
+
+use $PATH$Entities\$CLASS$;
+use $PATH$Repositories\$CLASS$Repository;
+use App\Infrastructure\Repositories\BaseRepository;
+
+/**
+ * @Class $CLASS$RepositoryEloquent
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Repository
+{
+    /**
+     * @inheritDoc
+     */
+    public function model(): string
+    {
+        return $CLASS$::class;
+    }
+}

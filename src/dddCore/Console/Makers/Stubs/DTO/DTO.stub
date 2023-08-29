@@ -1,0 +1,49 @@
+<?php
+
+$NAMESPACE$
+
+use $PATH$Entities\$CLASS$;
+use $PATH$Validators\$CLASS$Validator;
+use App\Infrastructure\DTO\BaseDTO;
+
+/**
+ * @Class $CLASS$DTO
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$DTO extends BaseDTO
+{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = ['discount_data'=>'json','order_type'=>'json'];
+
+    /**
+     * accept parameters
+     * @var array
+     */
+    public array $accessFields = $FILLING$;
+
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    public function model(): string
+    {
+        return $CLASS$::class;
+    }
+
+    /**
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
+    public function validator(): string
+    {
+        return $CLASS$Validator::class;
+    }
+
+
+}

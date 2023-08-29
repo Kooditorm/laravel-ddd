@@ -1,0 +1,14 @@
+<?php
+$NAMESPACE$
+
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+/**
+ * @Interface $CLASS$Repository
+ *
+ * @package $ROOT_NAMESPACE$
+ */
+interface $CLASS$Repository extends RepositoryInterface
+{
+
+}
