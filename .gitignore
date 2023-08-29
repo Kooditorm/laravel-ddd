@@ -1,0 +1,5 @@
+/compose.lock
+/vendor/
+laravel-dddCore.iml
+/.idea
+/*.iml
