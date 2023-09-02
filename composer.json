@@ -1,5 +1,5 @@
 {
-    "name": "Kooditorm/laravel-ddd-core",
+    "name": "kooditorm/laravel-ddd-core",
     "description": "The Core Package of Domain Driven Architecture Based on Laravel System",
     "keywords": [
         "Kooditorm",
@@ -8,7 +8,7 @@
         "ddd",
         "Domain Driven Design"
     ],
-    "homepage": "https://github.com/Kooditorm/aravel-ddd-core",
+    "homepage": "https://github.com/Kooditorm/laravel-ddd-core",
     "license": "MIT",
     "author": [
         {
