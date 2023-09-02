@@ -1,19 +1,24 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "Kooditorm/laravel-dddCore",
+    "description": "Larravel Extension Architecture for Domain Driven Design Patterns",
+    "keywords": [
+        "Kooditorm",
+        "laravel",
+        "laravel-dddCore",
+        "ddd",
+        "Domain Driven Design"
+    ],
+    "homepage": "https://github.com/Kooditorm/laravel-dddCore",
     "license": "MIT",
+    "author": [
+        {
+            "name": "oswin hu",
+            "email": "oswin-hu@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=7.4.0",
-        "ext-bcmath": "*",
-        "ext-dom": "*",
-        "ext-json": "*",
-        "ext-curl": "*",
-        "ext-openssl": "*",
-        "ext-redis": "*",
-        "godruoyi/php-snowflake": "^2.0",
-        "zoujingli/ip2region": "^2.0"
+        "godruoyi/php-snowflake": "^2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
