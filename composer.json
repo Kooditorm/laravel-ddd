@@ -1,6 +1,6 @@
 {
     "name": "Kooditorm/laravel-dddCore",
-    "description": "Larravel Extension Architecture for Domain Driven Design Patterns",
+    "description": "The Core Package of Domain Driven Architecture Based on Laravel System",
     "keywords": [
         "Kooditorm",
         "laravel",
