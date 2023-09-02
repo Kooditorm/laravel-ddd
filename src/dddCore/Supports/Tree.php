@@ -12,7 +12,7 @@ class Tree
 
         if (!empty($res['children'])) {
             foreach ($res['children'] as $child) {
-                $children = self::parse($res['remain'], $child[$child_key], $parent_key);
+                $children = self::parse($res['remain'], $child[$child_key], $parent_key, $child_key);
                 if (!empty($children)) {
                     $child['children'] = $children;
                 }
@@ -42,15 +42,15 @@ class Tree
 
     public static function hasChildren(array $data, int $parent_id, string $parent_key = 'parent_id'): bool
     {
-        return count(self::findChildren($data, $parent_id)['children']) > 0;
+        return count(self::findChildren($data, $parent_id, $parent_key)['children']) > 0;
     }
 
     public static function getPaths(array $item, array $data, string $parent_key = 'parent_id', string $child_key = 'id'): array
     {
         $rtn[] = $item;
-        $parent = self::findItem($item[$parent_key], $data);
+        $parent = self::findItem($item[$parent_key], $data, $child_key);
         if (!empty($parent)) {
-            $list = self::getPaths($parent, $data);
+            $list = self::getPaths($parent, $data, $parent_key, $child_key);
             foreach ($list as $value) {
                 $rtn[] = $value;
             }
