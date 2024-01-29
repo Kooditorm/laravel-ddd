@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Supports;
+namespace DDDCore\Supports;
 
 class Tree
 {

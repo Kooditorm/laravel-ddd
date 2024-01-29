@@ -24,6 +24,7 @@ class ConstantGenerator extends Generator
     /**
      * Get generator path config node.
      *
+     *
      * @return string
      */
     public function getPathConfigNode(): string

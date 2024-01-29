@@ -8,8 +8,8 @@
 
 namespace App\Infrastructure\Console\Makers;
 
-use App\Infrastructure\Console\Makers\Traits\FieldTrait;
 use App\Infrastructure\Libraries\Prettus\Generator;
+use DDDCore\Console\Makers\Traits\FieldTrait;
 
 class ValidatorGenerator extends Generator
 {

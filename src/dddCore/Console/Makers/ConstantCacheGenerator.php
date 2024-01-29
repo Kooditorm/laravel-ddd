@@ -6,7 +6,7 @@
  * Version: v1.0
  */
 
-namespace App\Infrastructure\Console\Makers;
+namespace DDDCore\Console\Makers;
 
 class ConstantCacheGenerator extends ConstantGenerator
 {
@@ -16,7 +16,7 @@ class ConstantCacheGenerator extends ConstantGenerator
      *
      * @var string
      */
-    protected $stub = 'constant/cache-constant';
+    protected string $stub = 'constant/cache-constant';
 
     /**
      * Get destination path for generated file.

@@ -14,14 +14,14 @@ class CronTabCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:crontab';
+    protected string $signature = 'command:crontab';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '系统定时任务管理';
+    protected string $description = '系统定时任务管理';
 
 
     public function handle(): void

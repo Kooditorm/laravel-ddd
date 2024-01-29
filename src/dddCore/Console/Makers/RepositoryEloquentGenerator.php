@@ -9,7 +9,7 @@
 namespace App\Infrastructure\Console\Makers;
 
 use App\Infrastructure\Libraries\Prettus\Generator;
-use App\Infrastructure\Console\Makers\Traits\FieldTrait;
+use DDDCore\Console\Makers\Traits\FieldTrait;
 
 class RepositoryEloquentGenerator extends Generator
 {

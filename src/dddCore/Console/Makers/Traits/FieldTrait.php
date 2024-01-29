@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Console\Makers\Traits;
+namespace DDDCore\Console\Makers\Traits;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
