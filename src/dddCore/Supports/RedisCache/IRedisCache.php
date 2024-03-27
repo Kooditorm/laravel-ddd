@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Supports\RedisCache;
+namespace DddCore\Supports\RedisCache;
 
 interface IRedisCache
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Console\Commands;
+namespace DddCore\Console\Commands;
 
 
 use Illuminate\Console\Command;
@@ -14,14 +14,14 @@ class CronTabCommand extends Command
      *
      * @var string
      */
-    protected string $signature = 'command:crontab';
+    protected $signature = 'command:crontab';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected string $description = '系统定时任务管理';
+    protected $description = '系统定时任务管理';
 
 
     public function handle(): void
