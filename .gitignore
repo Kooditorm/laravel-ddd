@@ -3,3 +3,4 @@
 laravel-dddCore.iml
 /.idea
 /*.iml
+/composer.lock
