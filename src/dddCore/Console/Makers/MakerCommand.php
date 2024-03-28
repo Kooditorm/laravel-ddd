@@ -113,7 +113,6 @@ class MakerCommand extends Command
 
     protected function runCall(array $option = []): void
     {
-        $runCommand = [];
         $commandObj = [];
         $single     = 0;
 
