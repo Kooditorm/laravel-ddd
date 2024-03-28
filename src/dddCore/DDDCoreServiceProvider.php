@@ -2,8 +2,10 @@
 
 namespace DDDCore;
 
+use DddCore\Console\Commands\CronTabCommand;
 use DDDCore\Console\Kernel;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -26,6 +28,11 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register(): void
     {
+        Log::info('DDDCoreServiceProvider register');
         $this->app->singleton(Kernel::class, Kernel::class);
+        $this->app->singleton('command.command:crontab' , function ($app){
+            return new CronTabCommand();
+        });
+        $this->commands('command.command:crontab');
     }
 }
