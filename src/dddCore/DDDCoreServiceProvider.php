@@ -6,8 +6,6 @@ use DddCore\Console\Commands\CronTabCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-;
-
 class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvider
 {
 
