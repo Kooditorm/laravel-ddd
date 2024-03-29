@@ -28,7 +28,7 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register(): void
     {
         Log::info('DDDCoreServiceProvider register');
-        $this->app->singleton('command.command:crontab' , function (){
+        $this->app->singleton('command.command.crontab' , function (){
             return new CronTabCommand();
         });
         $this->commands('command.command.crontab');
