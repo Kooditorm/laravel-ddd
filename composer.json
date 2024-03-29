@@ -19,8 +19,7 @@
     "require": {
         "php": ">=7.4.0",
         "illuminate/console": "^8.0.0",
-        "illuminate/support": "^8.0.0",
-        "godruoyi/php-snowflake": "^2.0"
+        "illuminate/support": "^8.0.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -36,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests"
         }
     },
     "extra": {
