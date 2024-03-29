@@ -2,8 +2,6 @@
 
 namespace DDDCore;
 
-use DDDCore\Console\Commands\CronTabCommand;
-use DddCore\Console\Makers\MakerCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,15 +25,7 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function register(): void
     {
-        $this->app->singleton('command.ddd-core.crontab', function () {
-            return new CronTabCommand();
-        });
-        $this->app->singleton('command.ddd-core.maker', function () {
-            return new MakerCommand();
-        });
-        $this->commands(
-            'command.ddd-core.crontab'
-        );
+
     }
 
 
@@ -46,6 +36,6 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     public function provides(): array
     {
-        return ['command.ddd-core.crontab', 'command.ddd-core.maker'];
+        return [];
     }
 }
