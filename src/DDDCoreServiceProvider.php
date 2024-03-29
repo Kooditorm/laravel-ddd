@@ -33,6 +33,7 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
         $this->commands(
             'command.ddd-core.crontab'
         );
+        $this->app->singleton(Kernel::class, Kernel::class);
     }
 
 
@@ -41,8 +42,8 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return array
      */
-//    public function provides(): array
-//    {
-//        return ['command.ddd-core.crontab'];
-//    }
+    public function provides(): array
+    {
+        return ['command.ddd-core.crontab'];
+    }
 }
