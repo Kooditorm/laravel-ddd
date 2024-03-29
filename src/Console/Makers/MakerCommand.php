@@ -5,7 +5,6 @@ namespace DddCore\Console\Makers;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 class MakerCommand extends Command
 {
