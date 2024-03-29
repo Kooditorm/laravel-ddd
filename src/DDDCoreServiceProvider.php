@@ -3,6 +3,7 @@
 namespace DDDCore;
 
 use DDDCore\Console\Commands\CronTabCommand;
+use DDDCore\Console\Kernel;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,8 +41,8 @@ class DDDCoreServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return array
      */
-    public function provides(): array
-    {
-        return ['command.ddd-core.crontab'];
-    }
+//    public function provides(): array
+//    {
+//        return ['command.ddd-core.crontab'];
+//    }
 }
