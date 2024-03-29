@@ -14,7 +14,7 @@ class CronTabCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:crontab';
+    protected $signature = 'ddd-core:crontab';
 
     /**
      * The console command description.
