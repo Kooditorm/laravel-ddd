@@ -14,7 +14,7 @@ class MakerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:ant {table} {path} {--d|del}';
+    protected $signature = 'ddd-core:maker {table} {path} {--d|del}';
 
     /**
      * The console command description.
