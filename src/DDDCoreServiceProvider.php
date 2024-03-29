@@ -2,7 +2,7 @@
 
 namespace DDDCore;
 
-use DddCore\Console\Commands\CronTabCommand;
+use DDDCore\Console\Commands\CronTabCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
