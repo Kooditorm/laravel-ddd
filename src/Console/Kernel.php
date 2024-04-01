@@ -2,9 +2,14 @@
 
 namespace DDDCore\Console;
 
-usE \DddCore\Libraries\Laravel\Foundation\Console\Kernel as ConsoleKernel;
+use  Illuminate\Foundation\Console\Kernel as LaravelKernel;
+use  DddCore\Libraries\Laravel\Contracts\Console\Kernel as LaravelKernelContract;
 
-class Kernel extends ConsoleKernel
+class Kernel extends LaravelKernel implements LaravelKernelContract
 {
 
+    public function commands()
+    {
+        echo 'commands';
+    }
 }
