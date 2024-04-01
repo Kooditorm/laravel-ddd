@@ -2,13 +2,13 @@
 
 namespace DDDCore\Console;
 
-use  Illuminate\Foundation\Console\Kernel as LaravelKernel;
-use  DddCore\Libraries\Laravel\Contracts\Console\Kernel as LaravelKernelContract;
+use DddCore\Libraries\Laravel\Contracts\Console\LaravelKernel;
+use Illuminate\Foundation\Console\Kernel as LFCKernel;
 
-class Kernel extends LaravelKernel implements LaravelKernelContract
+class Kernel extends LFCKernel implements LaravelKernel
 {
 
-    public function commands()
+    public function commands(): void
     {
         echo 'commands';
     }
