@@ -7,12 +7,17 @@ use Illuminate\Foundation\Console\Kernel as LaravelKernel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use ReflectionClass;
+use ReflectionException;
 use Symfony\Component\Finder\Finder;
 
 class Kernel extends LaravelKernel
 {
 
-
+    /**
+     * @param $paths
+     * @return void
+     * @throws ReflectionException
+     */
     protected function load($paths)
     {
         $paths = array_unique(Arr::wrap($paths));
