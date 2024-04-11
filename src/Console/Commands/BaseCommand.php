@@ -21,7 +21,6 @@ abstract class BaseCommand extends Command
         $result = parent::execute($input, $output);
         $t2     = microtime(true);
         Log::info('The execution time of command '.$this->name.' is: '.round(($t2 - $t1), 4).'s');
-        echo round(($t2 - $t1), 4).'s';
         return $result;
     }
 
