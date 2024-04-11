@@ -41,7 +41,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DDDCore\\DDDCoreServiceProvider"
+                "DDDCore\\Providers\\DDDCoreServiceProvider"
             ]
         }
     }
