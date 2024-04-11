@@ -28,9 +28,7 @@ class CrontabCommand extends Command
     public function handle(): void
     {
         while (true){
-            Log::info('开始执行crontab命令'.date('Y-m-d H:i:s'));
             $this->call("schedule:run");
-            Log::info('执行crontab命令完成'.date('Y-m-d H:i:s'));
             sleep(58);
         }
     }
