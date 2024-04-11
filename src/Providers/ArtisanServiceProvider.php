@@ -33,7 +33,9 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     protected function registerCrontabCommand(): void
     {
-        $this->app->singleton(CrontabCommand::class);
+        $this->app->singleton('command.crontab', function () {
+            return new CrontabCommand();
+        });
 
     }
 
