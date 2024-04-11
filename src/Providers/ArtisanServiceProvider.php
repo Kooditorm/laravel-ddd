@@ -2,14 +2,14 @@
 
 namespace DDDCore\Providers;
 
-use DddCore\Console\Commands\CrontabCommand;
+use DDDCore\Console\Commands\CrontabCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
 class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     protected array $commands = [
-        'Crontab' => CrontabCommand::class
+        'Crontab' => 'command.crontab',
     ];
 
     /**
@@ -31,10 +31,21 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
-    protected function registerCrontabCommand():void
+    protected function registerCrontabCommand(): void
     {
         $this->app->singleton(CrontabCommand::class);
 
+    }
+
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides(): array
+    {
+        return array_values($this->commands);
     }
 
 

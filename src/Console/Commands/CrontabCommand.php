@@ -1,6 +1,6 @@
 <?php
 
-namespace DddCore\Console\Commands;
+namespace DDDCore\Console\Commands;
 
 
 use Illuminate\Console\Command;
@@ -22,6 +22,7 @@ class CrontabCommand extends Command
      * @var string
      */
     protected $description = 'System scheduled task management';
+
 
 
     public function handle(): void
