@@ -30,7 +30,7 @@
             "src/Supports/helpers.php"
         ],
         "psr-4": {
-            "DDDCore\\": "src/"
+            "DDDCore\\": "src"
         }
     },
     "autoload-dev": {
