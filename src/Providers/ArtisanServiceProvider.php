@@ -2,6 +2,7 @@
 
 namespace DDDCore\Providers;
 
+use DddCore\Console\Commands\CrontabCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,4 +25,19 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
 
         $this->commands(array_values($this->commands));
     }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerCrontabCommand():void
+    {
+        $this->app->singleton('command.command.crontab', function (){
+            return new CrontabCommand();
+        });
+
+    }
+
+
 }

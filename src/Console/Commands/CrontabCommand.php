@@ -6,7 +6,7 @@ namespace DddCore\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class CronTabCommand extends Command
+class CrontabCommand extends Command
 {
 
     /**
