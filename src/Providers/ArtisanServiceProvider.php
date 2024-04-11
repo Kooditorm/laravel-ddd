@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     protected array $commands = [
-        'Crontab' => 'command.command.crontab'
+        'Crontab' => CrontabCommand::class
     ];
 
     /**
@@ -33,9 +33,7 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     protected function registerCrontabCommand():void
     {
-        $this->app->singleton('command.command.crontab', function (){
-            return new CrontabCommand();
-        });
+        $this->app->singleton(CrontabCommand::class);
 
     }
 

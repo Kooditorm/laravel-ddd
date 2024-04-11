@@ -21,7 +21,7 @@ class CrontabCommand extends Command
      *
      * @var string
      */
-    protected $description = '系统定时任务管理';
+    protected $description = 'System scheduled task management';
 
 
     public function handle(): void
