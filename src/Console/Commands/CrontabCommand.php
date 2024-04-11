@@ -14,7 +14,7 @@ class CrontabCommand extends Command
      *
      * @var string
      */
-    protected $name = 'make:crontab';
+    protected $name = 'command:crontab';
 
     /**
      * The console command description.
