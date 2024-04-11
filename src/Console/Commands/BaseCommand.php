@@ -24,4 +24,11 @@ abstract class BaseCommand extends Command
         echo round(($t2 - $t1), 4).'s';
         return $result;
     }
+
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
+    abstract public function handle():void;
 }
