@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @class BaseCommand
+ * @package DDDCore\Console\Commands
+ */
 abstract class BaseCommand extends Command
 {
 

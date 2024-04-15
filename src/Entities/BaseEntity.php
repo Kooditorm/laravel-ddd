@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * 基本Entity类型
+ * 基本实体
  *
  * @Class BaseEntity
  * @package DDDCore\Entities

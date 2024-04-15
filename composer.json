@@ -18,9 +18,10 @@
   ],
   "require": {
     "php": ">=7.4.0",
-    "illuminate/console": "^8.0.0",
-    "illuminate/support": "^8.0.0",
-    "tymon/jwt-auth": "^1.0"
+    "laravel/framework": "^7.0|^8.0|^9.0",
+    "laravel/tinker": "^2.0",
+    "tymon/jwt-auth": "^1.0",
+    "prettus/l5-repository": "^2.7"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
