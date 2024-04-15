@@ -1,48 +1,49 @@
 {
-    "name": "kooditorm/laravel-ddd",
-    "description": "The Core Package of Domain Driven Architecture Based on Laravel System",
-    "keywords": [
-        "Kooditorm",
-        "laravel",
-        "laravel-dddCore",
-        "ddd",
-        "Domain Driven Design"
-    ],
-    "homepage": "https://github.com/Kooditorm/laravel-ddd",
-    "license": "MIT",
-    "author": [
-        {
-            "name": "oswin hu",
-            "email": "oswin-hu@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.4.0",
-        "illuminate/console": "^8.0.0",
-        "illuminate/support": "^8.0.0"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-latest",
-        "phpunit/phpunit": "^9.3.3"
-    },
-    "autoload": {
-        "files": [
-            "src/Supports/helpers.php"
-        ],
-        "psr-4": {
-            "DDDCore\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "DDDCore\\Providers\\DDDCoreServiceProvider"
-            ]
-        }
+  "name": "kooditorm/laravel-ddd",
+  "description": "The Core Package of Domain Driven Architecture Based on Laravel System",
+  "keywords": [
+    "Kooditorm",
+    "laravel",
+    "laravel-dddCore",
+    "ddd",
+    "Domain Driven Design"
+  ],
+  "homepage": "https://github.com/Kooditorm/laravel-ddd",
+  "license": "MIT",
+  "author": [
+    {
+      "name": "oswin hu",
+      "email": "oswin-hu@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "illuminate/console": "^8.0.0",
+    "illuminate/support": "^8.0.0",
+    "tymon/jwt-auth": "^1.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^9.3.3"
+  },
+  "autoload": {
+    "files": [
+      "src/Supports/helpers.php"
+    ],
+    "psr-4": {
+      "DDDCore\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DDDCore\\Providers\\DDDCoreServiceProvider"
+      ]
+    }
+  }
 }
