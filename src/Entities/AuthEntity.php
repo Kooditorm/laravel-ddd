@@ -22,8 +22,10 @@ abstract class AuthEntity extends Authenticatable implements JWTSubject
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
      */
-    public function getJWTIdentifier()
+    public function getJWTIdentifier():mixed
     {
         return $this->getKey();
     }
@@ -36,6 +38,19 @@ abstract class AuthEntity extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims(): array
     {
         return $this->claims;
+    }
+
+    /**
+     *
+     * Set a key value data, containing any custom claims to be added to the JWT.
+     *
+     * @param  array  $claims
+     * @return $this
+     */
+    public function setJWTCustomClaims(array $claims): self
+    {
+        $this->claims = $claims;
+        return $this;
     }
 
 

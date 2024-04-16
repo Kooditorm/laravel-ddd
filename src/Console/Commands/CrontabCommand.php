@@ -4,8 +4,11 @@ namespace DDDCore\Console\Commands;
 
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 
+/**
+ * @class CrontabCommand
+ * @package DDDCore\Console\Commands
+ */
 class CrontabCommand extends Command
 {
 
