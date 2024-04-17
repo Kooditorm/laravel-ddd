@@ -23,7 +23,7 @@ if (!function_exists('getActions')) {
 
             if (isset($actions['controller'])) {
                 [$controller, $method] = explode('@', $actions['controller']);
-                $action = compact($controller, $method);
+                $action = compact('controller', 'method');
             }
         }
 
