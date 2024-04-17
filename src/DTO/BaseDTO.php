@@ -28,6 +28,21 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
     /** @var Request $request */
     private Request $request;
 
+
+    /**
+     * The name of the "created at" column.
+     *
+     * @var string|null
+     */
+    private const CREATED_AT = 'created_at';
+
+    /**
+     * The name of the "updated at" column.
+     *
+     * @var string|null
+     */
+    private const UPDATED_AT = 'updated_at';
+
     public function __construct()
     {
         $this->request    = app(Request::class);
