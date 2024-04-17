@@ -1,7 +1,5 @@
 <?php
 
-namespace DDDCore\Supports;
-
 use Illuminate\Http\Request;
 
 if (!function_exists('getActions')) {
