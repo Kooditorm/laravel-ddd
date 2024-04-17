@@ -11,6 +11,9 @@ use Illuminate\Support\Str;
 use JsonException;
 use JsonSerializable;
 use Prettus\Validator\LaravelValidator;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionNamedType;
 
 
 /**
@@ -47,10 +50,31 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
         }
     }
 
+    /**
+     * @return array
+     * @throws ReflectionException
+     */
     private function getAccessFields(): array
     {
         $actions = getActions($this->request);
-        var_dump($actions);
+        if (!empty($actions['controller'])) {
+            $class = new ReflectionClass($actions['controller']);
+            $properties = $class->getProperties();
+
+            if (!empty($properties)) {
+                foreach ($properties as $property) {
+                    $name = $property->getName();
+                    $type = $property->getType();
+
+                    if ($type instanceof ReflectionNamedType) {
+                        $typeName = $type->getName();
+                        echo "Property: $name, Type: $typeName\n";
+                    } else {
+                        echo "Property: $name, Type: unknown\n";
+                    }
+                }
+            }
+        }
         return [];
     }
 
