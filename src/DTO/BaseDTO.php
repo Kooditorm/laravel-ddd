@@ -6,7 +6,6 @@ use ArrayAccess;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
-use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use JsonException;
@@ -220,6 +219,17 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
     public function jsonSerialize(): array
     {
         return $this->toArray();
+    }
+
+
+    /**
+     * Get the value indicating whether the IDs are incrementing.
+     *
+     * @return bool
+     */
+    private function getIncrementing(): bool
+    {
+        return false;
     }
 
 
