@@ -232,5 +232,15 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
         return false;
     }
 
+    /**
+     * Determine if the model uses timestamps.
+     *
+     * @return bool
+     */
+    private function usesTimestamps(): bool
+    {
+        return true;
+    }
+
 
 }
