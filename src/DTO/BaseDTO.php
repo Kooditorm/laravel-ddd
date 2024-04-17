@@ -239,7 +239,7 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
      */
     private function usesTimestamps(): bool
     {
-        return true;
+        return false;
     }
 
 
