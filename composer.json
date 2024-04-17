@@ -22,7 +22,10 @@
     "laravel/framework": "^7.0|^8.0|^9.0",
     "laravel/tinker": "^2.0",
     "tymon/jwt-auth": "^1.0",
-    "prettus/l5-repository": "^2.7"
+    "prettus/l5-repository": "^2.7",
+    "egulias/email-validator": " ^2.1.10",
+    "doctrine/lexer": "^1.2.3",
+    "doctrine/annotations": "^1.13"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

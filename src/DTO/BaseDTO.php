@@ -7,8 +7,11 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use JsonException;
 use JsonSerializable;
+use Prettus\Validator\LaravelValidator;
 
 
 /**
@@ -19,9 +22,34 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
 {
     use HasAttributes, HasTimestamps;
 
+    /** @var LaravelValidator $validator */
+    private LaravelValidator $validator;
+
+    /** @var Request $request */
+    private Request $request;
+
     public function __construct()
     {
+        $this->request    = app(Request::class);
+        $this->validator  = app(LaravelValidator::class);
+        $this->attributes = [];
+        $this->init();
+    }
 
+    private function init(): void
+    {
+        $data = $this->request->all();
+
+        if (!empty($data)) {
+            collect($data)->each(function ($value, $key) {
+                $this->setAttribute($key, $value);
+            });
+        }
+    }
+
+    private function getAccessFields(): array
+    {
+        return [];
     }
 
     /**
