@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use JsonException;
 use JsonSerializable;
 use Prettus\Validator\LaravelValidator;
+use function DDDCore\Supports\getActions;
 
 
 /**
@@ -48,6 +49,7 @@ class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
 
     private function getAccessFields(): array
     {
+        print_r(getActions($this->request));
         return [];
     }
 
