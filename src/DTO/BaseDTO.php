@@ -20,7 +20,7 @@ use ReflectionNamedType;
  * @class BaseDTO
  * @package DDDCore\DTO
  */
-class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
+abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializable
 {
     use HasAttributes;
 

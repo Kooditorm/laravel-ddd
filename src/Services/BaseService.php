@@ -3,15 +3,32 @@
 namespace DDDCore\Services;
 
 use DDDCore\DTO\BaseDTO;
+use DDDCore\Repositories\BaseRepository;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class BaseService implements BaseServiceInterface
 {
+    /** @var BaseRepository|null $repository */
+    protected ?BaseRepository $repository = null;
 
-    /** @var BaseDTO $dto */
-    protected BaseDTO $dto;
+    /** @var ?BaseDTO|null $dto */
+    protected ?BaseDTO $dto = null;
 
-    public function __construct(BaseDTO $dto)
+    /** @var string|null $primaryKey */
+    protected ?string $primaryKey = null;
+
+
+    /**
+     * @param  BaseRepository|null  $repository
+     * @param  BaseDTO|null  $dto
+     * @throws RepositoryException
+     */
+    public function __construct(?BaseRepository $repository, ?BaseDTO $dto)
     {
-        $this->dto = $dto;
+        $this->repository = $repository;
+        $this->dto        = $dto;
+        $this->primaryKey = $this->repository->makeModel()->getKeyName();
     }
+
+
 }
