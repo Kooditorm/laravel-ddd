@@ -4,6 +4,8 @@ namespace DDDCore\Providers;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\AggregateServiceProvider;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DDDCoreServiceProvider extends AggregateServiceProvider implements DeferrableProvider
 {
@@ -16,4 +18,35 @@ class DDDCoreServiceProvider extends AggregateServiceProvider implements Deferra
     protected $providers = [
         ArtisanServiceProvider::class
     ];
+
+
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+
+        DB::listen(static function ($query) {
+            $sql      = $query->sql;
+            $bindings = $query->bindings;
+            $time     = $query->time;
+            foreach ($bindings as $k => $binding) {
+                if ($binding instanceof \DateTime) {
+                    $bindings[$k] = $binding->format('Y-m-d H:i:s');
+                } elseif (is_string($binding)) {
+                    $bindings[$k] = "'$binding'";
+                }
+            }
+            if (!empty($bindings)) {
+                $sql = str_replace(array('%', '?'), array('%%', '%s'), $sql);
+                $sql = vsprintf($sql, $bindings);
+            }
+
+            Log::info("SQL>>".$sql, ['bindings' => $bindings, 'time' => $time]);
+        });
+    }
+
 }
