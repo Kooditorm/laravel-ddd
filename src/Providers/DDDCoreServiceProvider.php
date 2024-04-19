@@ -14,6 +14,7 @@ class DDDCoreServiceProvider extends AggregateServiceProvider implements Deferra
      * @var string[]
      */
     protected $providers = [
+        ListenDBServiceProvider::class,
         ArtisanServiceProvider::class
     ];
 }
