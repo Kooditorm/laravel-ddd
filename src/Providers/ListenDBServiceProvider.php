@@ -15,7 +15,7 @@ class ListenDBServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        echo "ListenDBServiceProvider::register()";
+
     }
 
     /**
@@ -25,7 +25,7 @@ class ListenDBServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        echo "ListenDBServiceProvider::boot()";
+
         DB::listen(static function ($query) {
             $sql      = $query->sql;
             $bindings = $query->bindings;
@@ -45,16 +45,4 @@ class ListenDBServiceProvider extends ServiceProvider
             Log::info("SQL>>".$sql, ['bindings' => $bindings, 'time' => $time]);
         });
     }
-
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides(): array
-    {
-        return [__CLASS__];
-    }
-
 }
