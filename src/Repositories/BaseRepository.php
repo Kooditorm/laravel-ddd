@@ -2,6 +2,8 @@
 
 namespace DDDCore\Repositories;
 
+use Illuminate\Support\Facades\DB;
+use JsonException;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as RootRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
@@ -42,7 +44,7 @@ abstract class BaseRepository extends RootRepository implements BaseRepositoryIn
 
     /**
      * @inheritDoc
-     * @throw JSONException
+     * @throws JsonException
      */
     public function getSuperior(array $where, array $fields = [], string $childFiled = 'id', string $parentField = 'parent_id'): array
     {
@@ -74,7 +76,7 @@ abstract class BaseRepository extends RootRepository implements BaseRepositoryIn
 
             $table = $this->model->getTable();
             $sql   = " with recursive _sup as ";
-            $sql   .= " (select {$field} from {$table} tab {$whereStr} union all ";
+            $sql   .= " (select $field from $table tab {$whereStr} union all ";
             $sql   .= " select {$field} from _sup,{$table} tab where tab.{$childFiled} = _sup.{$parentField}) select * from _sup";
 
             $res = DB::select($sql);
