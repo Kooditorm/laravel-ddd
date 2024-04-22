@@ -53,7 +53,7 @@ abstract class BaseRepository extends RootRepository implements BaseRepositoryIn
         if (!empty($where)) {
             $field = array_merge([$childFiled, $parentField], $fields);
 
-            $field = collect($field)->each(function ($item) {
+            $field = collect($field)->map(function ($item) {
                 return 'tab.'.$item;
             })->toArray();
 
@@ -69,23 +69,17 @@ abstract class BaseRepository extends RootRepository implements BaseRepositoryIn
             }
 
             $whereStr = implode(' and ', $whereArr);
-
-            if (!empty($whereStr)) {
-                $whereStr = 'where '.$whereStr;
-            }
-
-            $table = $this->model->getTable();
-            $sql   = " with recursive _sup as ";
-            $sql   .= " (select $field from $table tab {$whereStr} union all ";
-            $sql   .= " select {$field} from _sup,{$table} tab where tab.{$childFiled} = _sup.{$parentField}) select * from _sup";
-
-            $res = DB::select($sql);
+            $table    = $this->model->getTable();
+            $mTable   = '_sup, '.$table.' as tab';
+            $tabSql   = $this->model->setTable($table.' as tab')->whereRaw($whereStr)->select($field)->toSql();
+            $_supSql  = $this->model->setTable(DB::raw($mTable))->whereRaw('tab.'.$childFiled.' = _sup.'.$parentField)->select($field)->toSql();
+            $sql      = "with recursive _sup as ($tabSql union all $_supSql) select * from _sup";
+            $res      = DB::select($sql);
 
             if (!empty($res)) {
                 $rtn = json_decode(json_encode($res, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
             }
         }
-
 
         return $rtn;
     }
