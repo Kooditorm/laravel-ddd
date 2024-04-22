@@ -33,7 +33,6 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
     public function __construct()
     {
         $this->request    = app(Request::class);
-        $this->validator  = app(LaravelValidator::class);
         $this->attributes = [];
         $this->init();
     }
@@ -41,7 +40,6 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
     private function init(): void
     {
         $data = $this->request->all();
-        $this->getAccessFields();
 
         if (!empty($data)) {
             collect($data)->each(function ($value, $key) {
