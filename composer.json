@@ -18,8 +18,8 @@
   ],
   "require": {
     "php": ">=7.4.0",
-    "ext-json": "*",
     "laravel/framework": "^7.0|^8.0|^9.0",
+    "bensampo/laravel-enum": "^3.3",
     "laravel/tinker": "^2.0",
     "tymon/jwt-auth": "^1.0",
     "prettus/l5-repository": "^2.7",
