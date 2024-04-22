@@ -11,7 +11,7 @@ class GenerateCommand extends MakerCommand
      *
      * @var string
      */
-    protected $signature = 'gen {--table=: The name of the table} {--path: The location where the file is generated} {--d|del}';
+    protected $signature = 'gen {table= : The name of the table} {path : The location where the file is generated} {--d|del}';
 
     /**
      * The console command description.
