@@ -18,7 +18,7 @@ class GenerateCommand extends MakerCommand
      *
      * @var string
      */
-    protected $description = 'Automatically generate project files';
+    protected $description = 'automatically generate project files';
 
 
     protected Filesystem $filesystem;
