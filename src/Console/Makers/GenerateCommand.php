@@ -11,7 +11,7 @@ class GenerateCommand extends MakerCommand
      *
      * @var string
      */
-    protected $name = 'gen {table} {path} {--d|del}';
+    protected $name = 'gen {--table=: The name of the table} {--path: The location where the file is generated} {--d|del}';
 
     /**
      * The console command description.
@@ -28,7 +28,7 @@ class GenerateCommand extends MakerCommand
     {
         $this->filesystem = $filesystem;
         if (!empty($name)) {
-            $this->signature   = 'gen:'.$name.' {table} {path}  {--d|del}';
+            $this->signature = str_replace('gen', 'gen:'.$name, $this->name);
         }
         parent::__construct();
     }

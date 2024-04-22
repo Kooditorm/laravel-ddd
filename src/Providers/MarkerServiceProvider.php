@@ -40,17 +40,17 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
     }
 
 
-    public function registerGenerateCommand(): void
-    {
-        $this->app->singleton('command.marker.generate', function ($app) {
-            return new GenerateCommand($app['files'], 'generate');
-        });
-    }
-
     public function registerGenCommand(): void
     {
         $this->app->singleton('command.marker.gen', function ($app) {
             return new GenerateCommand($app['files']);
+        });
+    }
+
+    public function registerGenerateCommand(): void
+    {
+        $this->app->singleton('command.marker.generate', function ($app) {
+            return new GenerateCommand($app['files'], 'generate');
         });
     }
 
