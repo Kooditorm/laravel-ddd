@@ -2,8 +2,10 @@
 
 namespace DDDCore\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use DDDCore\Supports\JWT;
+use Illuminate\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * @class AbstractServiceProvider
@@ -26,16 +28,17 @@ abstract class AbstractServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
+        $this->registerJwtProvider();
     }
 
-
+    /**
+     * Register the JWT provider.
+     */
     protected function registerJwtProvider(): void
     {
         $this->app->singleton('JWTAuth', function () {
             return new JWT();
         });
     }
-
 
 }
