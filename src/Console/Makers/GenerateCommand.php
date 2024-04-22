@@ -28,7 +28,7 @@ class GenerateCommand extends MakerCommand
     {
         $this->filesystem = $filesystem;
         if (!empty($name)) {
-            $this->signature = str_replace('gen', 'gen:'.$name, $this->name);
+            $this->signature = str_replace('gen', 'gen:'.$name, $this->signature);
         }
         parent::__construct();
     }
