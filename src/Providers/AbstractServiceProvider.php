@@ -3,8 +3,6 @@
 namespace DDDCore\Providers;
 
 use DDDCore\Supports\JWT;
-use Illuminate\Config\Repository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 /**
