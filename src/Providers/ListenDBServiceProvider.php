@@ -2,9 +2,9 @@
 
 namespace DDDCore\Providers;
 
+use DDDCore\Console\Commands\GenerateCommand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\ServiceProvider;
 
 class ListenDBServiceProvider extends AbstractServiceProvider
 {

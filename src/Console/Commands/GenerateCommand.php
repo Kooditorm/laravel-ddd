@@ -1,8 +1,7 @@
 <?php
 
-namespace DDDCore\Providers;
+namespace DDDCore\Console\Commands;
 
-use DDDCore\Console\Commands\BaseCommand;
 use Illuminate\Support\Facades\Log;
 
 class GenerateCommand extends BaseCommand
