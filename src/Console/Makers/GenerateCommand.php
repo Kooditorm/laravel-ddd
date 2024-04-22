@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDCore\Console\Markers;
+namespace DDDCore\Console\Makers;
 
 use Illuminate\Filesystem\Filesystem;
 

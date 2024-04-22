@@ -2,7 +2,7 @@
 
 namespace DDDCore\Providers;
 
-use DDDCore\Console\Markers\GenerateCommand;
+use DDDCore\Console\Makers\GenerateCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
      * @var string[]
      */
     protected array $commands = [
-//        'Gen'      => 'command.marker.gen',
+        'Gen'      => 'command.marker.gen',
         'Generate' => 'command.marker.generate',
     ];
 
@@ -47,12 +47,12 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
         });
     }
 
-//    public function registerGenCommand(): void
-//    {
-//        $this->app->singleton('command.marker.gen', function ($app) {
-//            return new GenerateCommand($app['files']);
-//        });
-//    }
+    public function registerGenCommand(): void
+    {
+        $this->app->singleton('command.marker.gen', function ($app) {
+            return new GenerateCommand($app['files']);
+        });
+    }
 
 
     /**
