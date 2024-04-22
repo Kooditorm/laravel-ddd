@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
-class ListenDBServiceProvider extends ServiceProvider
+class ListenDBServiceProvider extends AbstractServiceProvider
 {
     /**
      * Register any application services.
@@ -15,7 +15,16 @@ class ListenDBServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->registerGenerateCommand();
+        $this->commands('command.gen:generate');
+    }
 
+
+    protected function registerGenerateCommand(): void
+    {
+        $this->app->singleton('command.gen:generate', function () {
+            return new GenerateCommand();
+        });
     }
 
     /**
