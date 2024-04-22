@@ -1,5 +1,10 @@
 <?php
+namespace DDDCore\Supports;
 
+/**
+ * @class JWT
+ * @package DDDCore\Supports
+ */
 class JWT
 {
     /** @var array  用户信息 */

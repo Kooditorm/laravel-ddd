@@ -4,6 +4,11 @@ namespace DDDCore\Console\Makers;
 
 use Illuminate\Filesystem\Filesystem;
 
+
+/**
+ * @class GenerateCommand
+ * @package DDDCore\Console\Makers
+ */
 class GenerateCommand extends MakerCommand
 {
     /**

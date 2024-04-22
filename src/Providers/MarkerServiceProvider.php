@@ -6,6 +6,10 @@ use DDDCore\Console\Makers\GenerateCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * @class MarkerServiceProvider
+ * @package DDDCore\Providers
+ */
 class MarkerServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**

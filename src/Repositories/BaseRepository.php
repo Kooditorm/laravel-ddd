@@ -8,6 +8,10 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as RootRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 
+/**
+ * @class BaseRepository
+ * @package DDDCore\Repositories
+ */
 abstract class BaseRepository extends RootRepository implements BaseRepositoryInterface
 {
     /**

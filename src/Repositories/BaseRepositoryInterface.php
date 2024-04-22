@@ -2,6 +2,10 @@
 
 namespace DDDCore\Repositories;
 
+/**
+ * @interface BaseRepositoryInterface
+ * @package DDDCore\Repositories
+ */
 interface BaseRepositoryInterface
 {
 

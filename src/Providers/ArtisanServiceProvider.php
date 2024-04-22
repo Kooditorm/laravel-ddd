@@ -6,6 +6,10 @@ use DDDCore\Console\Commands\CrontabCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * @class ArtisanServiceProvider
+ * @package DDDCore\Providers
+ */
 class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     protected array $commands = [

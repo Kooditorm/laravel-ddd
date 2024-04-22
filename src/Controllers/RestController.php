@@ -8,6 +8,10 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 
+/**
+ * @class RestController
+ * @package DDDCore\Controllers
+ */
 class RestController extends Controller
 {
     use ResponseTraits;

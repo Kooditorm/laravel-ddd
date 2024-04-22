@@ -6,6 +6,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 
+/**
+ * @trait ResponseTraits
+ * @package DDDCore\Traits
+ */
 trait ResponseTraits
 {
     /**

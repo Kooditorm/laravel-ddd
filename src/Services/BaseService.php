@@ -6,6 +6,10 @@ use DDDCore\DTO\BaseDTO;
 use DDDCore\Repositories\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 
+/**
+ * @class BaseService
+ * @package DDDCore\Services
+ */
 class BaseService implements BaseServiceInterface
 {
     /** @var BaseRepository|null $repository */

@@ -4,8 +4,11 @@ namespace DDDCore\Providers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use function Symfony\Component\String\s;
 
+/**
+ * @class DDDCoreServiceProvider
+ * @package DDDCore\Providers
+ */
 class DDDCoreServiceProvider extends AbstractServiceProvider
 {
 
@@ -20,6 +23,11 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
     }
 
 
+    /**
+     * Listening for executing SQL statements
+     *
+     * @return void
+     */
     private function DBListen(): void
     {
         DB::listen(static function ($query) {
