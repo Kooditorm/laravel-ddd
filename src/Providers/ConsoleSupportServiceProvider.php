@@ -13,6 +13,7 @@ class ConsoleSupportServiceProvider extends AggregateServiceProvider implements 
      * @var string[]
      */
     protected $providers = [
-        ArtisanServiceProvider::class
+        ArtisanServiceProvider::class,
+        MarkerServiceProvider::class,
     ];
 }
