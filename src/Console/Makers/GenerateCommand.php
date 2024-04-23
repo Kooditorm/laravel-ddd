@@ -2,6 +2,7 @@
 
 namespace DDDCore\Console\Makers;
 
+use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
 
@@ -9,7 +10,7 @@ use Illuminate\Filesystem\Filesystem;
  * @class GenerateCommand
  * @package DDDCore\Console\Makers
  */
-class GenerateCommand extends MakerCommand
+class GenerateCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -25,7 +26,11 @@ class GenerateCommand extends MakerCommand
      */
     protected $description = 'automatically generate project files';
 
-
+    /**
+     * The filesystem instance.
+     *
+     * @var Filesystem
+     */
     protected Filesystem $filesystem;
 
 

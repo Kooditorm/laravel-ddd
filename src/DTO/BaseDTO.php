@@ -24,9 +24,6 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
 {
     use HasAttributes;
 
-    /** @var LaravelValidator $validator */
-    private LaravelValidator $validator;
-
     /** @var Request $request */
     private Request $request;
 
