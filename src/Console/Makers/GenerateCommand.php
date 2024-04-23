@@ -33,6 +33,11 @@ class GenerateCommand extends Command
      */
     protected Filesystem $filesystem;
 
+    /**
+     * @var array
+     */
+    protected array $register = [];
+
 
     public function __construct(Filesystem $filesystem, ?string $name = null)
     {
