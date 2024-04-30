@@ -4,7 +4,7 @@ namespace DDDCore\Libraries\Prettus;
 
 use DDDCore\Traits\FieldTrait;
 use Prettus\Repository\Generators\FileAlreadyExistsException;
-use Prettus\Repository\Generators\Generator as PretTusGenerator;
+use Prettus\Repository\Generators\Generator as PrettusGenerator;
 
 abstract class Generator extends PrettusGenerator
 {
