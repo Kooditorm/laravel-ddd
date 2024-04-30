@@ -4,6 +4,10 @@ namespace DDDCore\Constants;
 
 use BenSampo\Enum\Enum;
 
+/**
+ * @class ErrorCodeConstant
+ * @package DDDCore\Constants
+ */
 class ErrorCodeConstant extends Enum
 {
 
