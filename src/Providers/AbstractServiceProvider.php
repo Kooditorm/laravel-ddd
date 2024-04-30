@@ -2,6 +2,7 @@
 
 namespace DDDCore\Providers;
 
+use DDDCore\Facades\TraceChainId;
 use DDDCore\Supports\JWT;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +18,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    abstract public function boot();
+    abstract public function boot():void;
 
     /**
      * Register the service provider.
@@ -27,6 +28,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerJwtProvider();
+        $this->registerTraceChainIdProvider();
     }
 
     /**
@@ -36,6 +38,13 @@ abstract class AbstractServiceProvider extends ServiceProvider
     {
         $this->app->singleton('JWTAuth', function () {
             return new JWT();
+        });
+    }
+
+    protected function registerTraceChainIdProvider():void
+    {
+        $this->app->singleton('TraceChainId', function () {
+            return new TraceChainId();
         });
     }
 
