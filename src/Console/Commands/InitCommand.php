@@ -6,14 +6,14 @@ class InitCommand extends BaseCommand
 {
 
     /**
-     * The name of command.
+     * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'init';
+    protected $signature = 'init';
 
     /**
-     * The description of command.
+     * The console command description.
      *
      * @var string
      */
