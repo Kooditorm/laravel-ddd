@@ -10,7 +10,7 @@ class InitCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'ddd:init';
+    protected $name = 'init';
 
     /**
      * The description of command.
@@ -18,6 +18,16 @@ class InitCommand extends BaseCommand
      * @var string
      */
     protected $description = 'Domain driven system initialization command';
+
+
+    public function __construct(?string $name = null)
+    {
+
+        if (!empty($name)) {
+            $this->signature = str_replace('init', 'ddd:'.$name, $this->signature);
+        }
+        parent::__construct();
+    }
 
     public function handle(): void
     {

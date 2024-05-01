@@ -3,6 +3,7 @@
 namespace DDDCore\Providers;
 
 use DDDCore\Console\Commands\CrontabCommand;
+use DDDCore\Console\Commands\InitCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +14,10 @@ use Illuminate\Support\ServiceProvider;
 class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     protected array $commands = [
-        'Crontab' => 'command.crontab',
+        'Crontab'    => 'command.crontab',
+        'Init'       => 'command.init',
+        'Initialize' => 'command.ddd.init'
+
     ];
 
     /**
@@ -31,7 +35,7 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
     }
 
     /**
-     * Register the command.
+     * Register Crontab command.
      *
      * @return void
      */
@@ -43,6 +47,30 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
 
     }
 
+    /**
+     * Register Init command.
+     *
+     * @return void
+     */
+    protected function registerInitCommand(): void
+    {
+        $this->app->singleton('command.init', function () {
+            return new InitCommand();
+        });
+    }
+
+
+    /**
+     * Register Initialize command.
+     *
+     * @return void
+     */
+    protected function registerInitializeCommand(): void
+    {
+        $this->app->singleton('command.ddd.init', function () {
+            return new InitCommand('init');
+        });
+    }
 
     /**
      * Get the services provided by the provider.

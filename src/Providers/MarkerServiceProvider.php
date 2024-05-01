@@ -34,6 +34,12 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
     }
 
 
+    /**
+     * Register commands.
+     *
+     * @param  array  $commands
+     * @return void
+     */
     protected function registerCommands(array $commands): void
     {
         foreach (array_keys($commands) as $command) {
@@ -44,6 +50,11 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
     }
 
 
+    /**
+     * Register gen command.
+     *
+     * @return void
+     */
     public function registerGenCommand(): void
     {
         $this->app->singleton('command.marker.gen', function ($app) {
@@ -51,6 +62,11 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
         });
     }
 
+    /**
+     * Register generate command.
+     *
+     * @return void
+     */
     public function registerGenerateCommand(): void
     {
         $this->app->singleton('command.marker.generate', function ($app) {
