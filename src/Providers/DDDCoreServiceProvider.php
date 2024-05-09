@@ -19,7 +19,10 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
      */
     public function boot(): void
     {
+        $path = dirname(__DIR__, 3).'/config/ddd.php';
+        echo $path;
         $path = realpath(__DIR__.'/../../config/config.php');
+        echo $path;
 
         $this->publishes([$path => config_path('ddd.php')], 'config');
         $this->mergeConfigFrom($path, 'ddd');
