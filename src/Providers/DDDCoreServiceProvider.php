@@ -19,17 +19,13 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
      */
     public function boot(): void
     {
-        $path = dirname(__DIR__, 3).'/config/ddd.php';
-        echo $path;
-        $path = realpath(__DIR__.'/../../config/config.php');
-        echo $path;
+        $path = dirname(__DIR__, 2).'/config/ddd.php';
 
         $this->publishes([$path => config_path('ddd.php')], 'config');
         $this->mergeConfigFrom($path, 'ddd');
 
         $this->DBListen();
     }
-
 
     /**
      * Listening for executing SQL statements
