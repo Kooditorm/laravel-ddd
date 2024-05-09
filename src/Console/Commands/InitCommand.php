@@ -21,6 +21,12 @@ class InitCommand extends BaseCommand
      */
     protected $description = 'Domain driven system initialization command';
 
+    /**
+     * The application path.
+     *
+     * @var ?string $app_path
+     */
+    protected ?string $app_path = null;
 
     public function __construct(?string $name = null)
     {
@@ -28,6 +34,11 @@ class InitCommand extends BaseCommand
         if (!empty($name)) {
             $this->signature = str_replace('init', 'ddd:'.$name, $this->signature);
         }
+
+        if (is_null($this->app_path)) {
+            $this->app_path = app_path();
+        }
+
         parent::__construct();
     }
 
@@ -44,8 +55,17 @@ class InitCommand extends BaseCommand
      */
     private function init(): void
     {
-        $app    = app_path();
-        $this->backup($app, $app.'/backup');
+        $this->replaceLogging();
+
+    }
+
+
+    private function replaceLogging(): void
+    {
+        $logging_file = config_path('logger.php');
+
+//        $logging = dirname(__DIR__, 2).'/config/logger.php';
+
     }
 
     /**
