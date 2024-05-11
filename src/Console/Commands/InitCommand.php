@@ -59,13 +59,32 @@ class InitCommand extends BaseCommand
 
     }
 
-
+    /**
+     * 替换日志配置
+     *
+     * @return void
+     */
     private function replaceLogging(): void
     {
-        $logging_file = config_path('logger.php');
+        $logging_file = config_path('logging.php');
+        $loggingText  = file_get_contents($logging_file);
+        if (file_exists($logging_file)) {
+            rename($logging_file, $logging_file.'.backup');
+        }
+        $logging = dirname(__DIR__, 3).'/config/logging.php';
+        try {
+            copy($logging, $logging_file);
+        } catch (RuntimeException $exception) {
+            rename($logging_file.'.backup', $logging_file);
+        } finally {
+            if (!file_exists($logging_file)) {
+                file_put_contents($logging_file, $loggingText);
+            }
 
-//        $logging = dirname(__DIR__, 2).'/config/logger.php';
-
+            if (file_exists($logging_file.'.backup')) {
+                unlink($logging_file.'.backup');
+            }
+        }
     }
 
     /**
