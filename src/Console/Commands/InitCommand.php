@@ -42,6 +42,10 @@ class InitCommand extends BaseCommand
         parent::__construct();
     }
 
+    /**
+     * @inheritDoc
+     * @return void
+     */
     public function handle(): void
     {
         $this->line('Start initializing project...');
@@ -49,18 +53,29 @@ class InitCommand extends BaseCommand
     }
 
     /**
-     * Create the domain directory.
+     * Initialize system architecture
      *
      * @return void
      */
     private function init(): void
     {
-        $this->replaceLogging();
+        $this->buildConfiguration();
+    }
 
+
+    /**
+     * Build configuration.
+     *
+     * @return void
+     */
+    private function buildConfiguration(): void
+    {
+        $this->replaceLogging();
+        $this->line('Build configuration completed');
     }
 
     /**
-     * 替换日志配置
+     * Replace logging configuration.
      *
      * @return void
      */
