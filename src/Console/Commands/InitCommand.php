@@ -71,7 +71,18 @@ class InitCommand extends BaseCommand
     private function buildConfiguration(): void
     {
         $this->replaceLogging();
-        $this->line('Build configuration completed');
+        $this->line('Build configuration completed...');
+    }
+
+
+    /**
+     * Build domain.
+     *
+     * @return void
+     */
+    private function buildDomain(): void
+    {
+        $this->line('Building system architecture completed...');
     }
 
     /**
