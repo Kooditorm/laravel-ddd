@@ -61,6 +61,7 @@ class InitCommand extends BaseCommand
     private function init(): void
     {
         $this->buildConfiguration();
+        $this->buildDomain();
     }
 
 
@@ -84,6 +85,11 @@ class InitCommand extends BaseCommand
      */
     private function buildDomain(): void
     {
+        $domain_file = app_path('Domain');
+        if (!mkdir($concurrentDirectory = dirname($domain_file), 0777, true) && !is_dir($concurrentDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
+
         $this->line('Building system architecture completed...');
     }
 
