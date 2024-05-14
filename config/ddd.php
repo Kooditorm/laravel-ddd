@@ -27,6 +27,19 @@ return [
     */
     'interface_name' => env('INTERFACE_NAME', 'Interfaces'),
 
-    'event' => [],
+    /*
+    | --------------------------------------------------------------------------
+    | The event handler mappings for the application.
+    | --------------------------------------------------------------------------
+    |
+    | Here you can configure the event handler mapping for the application.
+    | Facilitate user management of event mapping relationships.
+    | The configuration here can be used together with the event registration of the original framework
+    |
+    |
+    */
+    'listen' => [
+
+    ],
 
 ];
