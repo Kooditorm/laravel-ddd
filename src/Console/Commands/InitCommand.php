@@ -46,6 +46,10 @@ class InitCommand extends BaseCommand
             $this->app_path = app_path();
         }
 
+        if (!empty($config)) {
+            $this->config = $config;
+        }
+
         parent::__construct();
     }
 
@@ -90,6 +94,7 @@ class InitCommand extends BaseCommand
      */
     private function buildDomain(): void
     {
+        print_r($this->config);
         $this->line('Building system architecture completed...');
     }
 
