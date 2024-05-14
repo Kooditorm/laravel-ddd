@@ -4,3 +4,4 @@ laravel-dddCore.iml
 /.idea
 /*.iml
 /composer.lock
+/config/ddd.php
