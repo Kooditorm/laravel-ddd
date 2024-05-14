@@ -28,14 +28,7 @@ class InitCommand extends BaseCommand
      */
     protected ?string $app_path = null;
 
-    /**
-     * The ddd configuration
-     *
-     * @var array $config
-     */
-    protected array $config = [];
-
-    public function __construct(array $config = [], ?string $name = null)
+    public function __construct(?string $name = null)
     {
 
         if (!empty($name)) {
@@ -46,9 +39,6 @@ class InitCommand extends BaseCommand
             $this->app_path = app_path();
         }
 
-        if (!empty($config)) {
-            $this->config = $config;
-        }
 
         parent::__construct();
     }
@@ -94,7 +84,6 @@ class InitCommand extends BaseCommand
      */
     private function buildDomain(): void
     {
-        print_r($this->config);
         $this->line('Building system architecture completed...');
     }
 
