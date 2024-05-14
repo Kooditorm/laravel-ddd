@@ -71,6 +71,7 @@ class InitCommand extends BaseCommand
     private function buildConfiguration(): void
     {
         $this->replaceLogging();
+        $this->replaceHandler();
         $this->line('Build configuration completed...');
     }
 
@@ -109,6 +110,34 @@ class InitCommand extends BaseCommand
 
             if (file_exists($logging_file.'.backup')) {
                 unlink($logging_file.'.backup');
+            }
+        }
+    }
+
+    /**
+     * Replace handler Exception
+     *
+     * @return void
+     */
+    private function replaceHandler():void
+    {
+        $handler_file = $this->app_path . '/Exceptions/Handler.php';
+        $handlerText  = file_get_contents($handler_file);
+        if (file_exists($handler_file)) {
+            rename($handler_file, $handler_file.'.backup');
+        }
+        $handler = dirname(__DIR__, 3).'/src/Exceptions/Handler.php';
+        try {
+            copy($handler, $handler_file);
+        } catch (RuntimeException $exception) {
+            rename($handler_file.'.backup', $handler_file);
+        } finally {
+            if (!file_exists($handler_file)) {
+                file_put_contents($handler_file, $handlerText);
+            }
+
+            if (file_exists($handler_file.'.backup')) {
+                unlink($handler_file.'.backup');
             }
         }
     }
