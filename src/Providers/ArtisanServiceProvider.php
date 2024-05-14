@@ -54,8 +54,10 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     protected function registerInitCommand(): void
     {
-        $this->app->singleton('command.init', function () {
-            return new InitCommand();
+        $this->app->singleton('command.init', function ($app) {
+            $config = $app['config'] ?? [];
+            $dddConf = $config['ddd'] ?? [];
+            return new InitCommand($dddConf);
         });
     }
 
@@ -67,8 +69,10 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      */
     protected function registerInitializeCommand(): void
     {
-        $this->app->singleton('command.ddd.init', function () {
-            return new InitCommand('init');
+        $this->app->singleton('command.ddd.init', function ($app) {
+            $config = $app['config'] ?? [];
+            $dddConf = $config['ddd'] ?? [];
+            return new InitCommand($dddConf,'init');
         });
     }
 

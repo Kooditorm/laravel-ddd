@@ -28,7 +28,14 @@ class InitCommand extends BaseCommand
      */
     protected ?string $app_path = null;
 
-    public function __construct(?string $name = null)
+    /**
+     * The ddd configuration
+     *
+     * @var array $config
+     */
+    protected array $config = [];
+
+    public function __construct(array $config = [], ?string $name = null)
     {
 
         if (!empty($name)) {
@@ -142,37 +149,37 @@ class InitCommand extends BaseCommand
         }
     }
 
-    /**
-     * @param $filename
-     * @param $backupName
-     * @return void
-     */
-    private function backup($filename, $backupName): void
-    {
-        if (!file_exists($filename)) {
-            throw new RuntimeException(sprintf('File "%s" does not exist', $filename));
-        }
-
-        if (!file_exists($backupName) && !mkdir($backupName, 0777, true) && !is_dir($backupName)) {
-            throw new RuntimeException(sprintf('Directory "%s" was not created', $backupName));
-        }
-
-        $files = scandir($filename);
-
-        foreach ($files as $file) {
-            if ($file === '.' || $file === '..') {
-                continue;
-            }
-
-            $sourcePath      = $filename.'/'.$file;
-            $destinationPath = $backupName.'/'.$file;
-
-            if (is_dir($sourcePath)) {
-                $this->backup($sourcePath, $destinationPath);
-            } else {
-                copy($sourcePath, $destinationPath);
-            }
-        }
-
-    }
+//    /**
+//     * @param $filename
+//     * @param $backupName
+//     * @return void
+//     */
+//    private function backup($filename, $backupName): void
+//    {
+//        if (!file_exists($filename)) {
+//            throw new RuntimeException(sprintf('File "%s" does not exist', $filename));
+//        }
+//
+//        if (!file_exists($backupName) && !mkdir($backupName, 0777, true) && !is_dir($backupName)) {
+//            throw new RuntimeException(sprintf('Directory "%s" was not created', $backupName));
+//        }
+//
+//        $files = scandir($filename);
+//
+//        foreach ($files as $file) {
+//            if ($file === '.' || $file === '..') {
+//                continue;
+//            }
+//
+//            $sourcePath      = $filename.'/'.$file;
+//            $destinationPath = $backupName.'/'.$file;
+//
+//            if (is_dir($sourcePath)) {
+//                $this->backup($sourcePath, $destinationPath);
+//            } else {
+//                copy($sourcePath, $destinationPath);
+//            }
+//        }
+//
+//    }
 }
