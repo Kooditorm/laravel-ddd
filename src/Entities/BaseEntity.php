@@ -16,4 +16,25 @@ use Prettus\Repository\Traits\TransformableTrait;
 abstract class BaseEntity extends Model implements Transformable
 {
     use TransformableTrait, HasFactory;
+
+    /**
+     * 定义表前缀
+     *
+     * @var string|null
+     */
+    protected ?string $prefix = null;
+
+    /**
+     * @inheritDoc
+     *
+     */
+    public function getTable(): string
+    {
+        if (!is_null($this->prefix)) {
+            $this->getConnection()->setTablePrefix($this->prefix);
+        }
+        return parent::getTable();
+    }
+
+
 }

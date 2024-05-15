@@ -13,12 +13,34 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  */
 abstract class AuthEntity extends Authenticatable implements JWTSubject
 {
+
+    /**
+     * 定义表前缀
+     *
+     * @var string|null
+     */
+    protected ?string $prefix = null;
+
     /**
      * 自定义jwt声明
      *
      * @var array
      */
     protected array $claims = [];
+
+
+    /**
+     * @inheritDoc
+     *
+     */
+    public function getTable(): string
+    {
+        if (!is_null($this->prefix)) {
+            $this->getConnection()->setTablePrefix($this->prefix);
+        }
+        return parent::getTable();
+    }
+
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
