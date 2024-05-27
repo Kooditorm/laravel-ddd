@@ -4,6 +4,10 @@ namespace DDDCore\Console\Commands;
 
 use RuntimeException;
 
+/**
+ * @class InitCommand
+ * @package DDDCore\Console\Commands
+ */
 class InitCommand extends BaseCommand
 {
 
