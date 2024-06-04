@@ -91,10 +91,18 @@ class InitCommand extends BaseCommand
     {
         $domain_file = app_path('Domain');
         if (!mkdir($concurrentDirectory = dirname($domain_file), 0777, true) && !is_dir($concurrentDirectory)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
 
         $this->line('Building system architecture completed...');
+    }
+
+    private function buildInterface(): void
+    {
+        $interface_file = app_path('Interfaces');
+        if (!mkdir($concurrentDirectory = dirname($interface_file), 0777, true) && !is_dir($concurrentDirectory)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
     }
 
     /**
