@@ -1,0 +1,35 @@
+<?php
+
+$NAMESPACE$
+
+use DDDCore\Entities\BaseEntity
+
+/**
+ * @class $CLASS$.
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$ extends BaseEntity
+{
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = '$TABLE$';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = $FILLABLE$;
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [];
+
+}
