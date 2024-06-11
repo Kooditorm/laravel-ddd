@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDCore\Console\Inits\Stubs;
+namespace DDDCore\Console\Inits;
 
 use DDDCore\Libraries\Prettus\Generator;
 

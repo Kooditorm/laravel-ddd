@@ -2,7 +2,7 @@
 
 namespace DDDCore\Console\Commands;
 
-use DDDCore\Console\Inits\Stubs\HandlerGenerator;
+use DDDCore\Console\Inits\HandlerGenerator;
 use Prettus\Repository\Generators\FileAlreadyExistsException;
 use RuntimeException;
 
