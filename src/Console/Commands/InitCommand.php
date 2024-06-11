@@ -2,6 +2,8 @@
 
 namespace DDDCore\Console\Commands;
 
+use DDDCore\Console\Inits\Stubs\HandlerGenerator;
+use Prettus\Repository\Generators\FileAlreadyExistsException;
 use RuntimeException;
 
 /**
@@ -145,10 +147,11 @@ class InitCommand extends BaseCommand
         if (file_exists($handler_file)) {
             rename($handler_file, $handler_file.'.backup');
         }
-        $handler = dirname(__DIR__, 3).'/src/Exceptions/Handler.php';
+//        $handler = dirname(__DIR__, 3).'/src/Exceptions/Handler.php';
         try {
-            copy($handler, $handler_file);
-        } catch (RuntimeException $exception) {
+            (new HandlerGenerator())->run();
+//            copy($handler, $handler_file);
+        } catch (RuntimeException|FileAlreadyExistsException $exception) {
             rename($handler_file.'.backup', $handler_file);
         } finally {
             if (!file_exists($handler_file)) {
