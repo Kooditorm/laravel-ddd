@@ -20,12 +20,5 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\\Interfaces\\Http\\Controllers';
 
 
-    public function register(): void
-    {
-        print_r('register route service provider');
-        parent::register();
-    }
-
-
 
 }
