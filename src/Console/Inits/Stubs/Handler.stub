@@ -2,34 +2,77 @@
 
 $NAMESPACE$
 
-use DDDCore\Entities\BaseEntity
+use DDDCore\Traits\ResponseTraits;
+use DDDCore\Exceptions\BaseException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Throwable;
 
 /**
  * @class $CLASS$.
  * @package $ROOT_NAMESPACE$
  */
-class $CLASS$ extends BaseEntity
+class $CLASS$ extends ExceptionHandler
 {
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = '$TABLE$';
+    use ResponseTraits;
+
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
-    protected $fillable = $FILLABLE$;
-
-    /**
-     * The attributes that should be hidden for serialization.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $dontReport = [
+        //
+    ];
 
+    /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
+    ];
+
+
+    /**
+     * Register the exception handling callbacks for the application.
+     *
+     * @param $request
+     * @param  Throwable  $e
+     * @return JsonResponse
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): JsonResponse
+    {
+        if ($e instanceof BaseException) {
+            return $this->failed($e->getMessage(), $e->getCode());
+        }
+
+        if ($e instanceof ValidatorException) {
+            $message = $e->getMessage();
+            $bag     = $e->getMessageBag();
+            if ($bag !== null) {
+                $message = $bag->first();
+            }
+            return $this->failed($message, 400);
+        }
+
+
+        if ($e instanceof ModelNotFoundException) {
+            return $this->notFound();
+        }
+
+        if ($e instanceof NotFoundHttpException) {
+            return $this->notFound();
+        }
+
+        return $this->failed($e->getMessage(), $e->getCode());
+    }
 }

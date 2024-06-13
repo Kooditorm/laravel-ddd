@@ -147,10 +147,8 @@ class InitCommand extends BaseCommand
         if (file_exists($handler_file)) {
             rename($handler_file, $handler_file.'.backup');
         }
-        $handler = dirname(__DIR__, 3).'/src/Exceptions/Handler.php';
         try {
             (new HandlerGenerator())->run();
-            copy($handler, $handler_file);
         } catch (RuntimeException|FileAlreadyExistsException $exception) {
             rename($handler_file.'.backup', $handler_file);
         } finally {

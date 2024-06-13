@@ -35,8 +35,6 @@ abstract class Generator extends PrettusGenerator
     {
         $this->setUp();
         $action = $this->options['action'] ?? '';
-        print_r($this->getPath());
-        exit();
         return parent::run();
     }
 }
