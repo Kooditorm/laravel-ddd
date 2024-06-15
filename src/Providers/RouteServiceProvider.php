@@ -3,6 +3,7 @@
 namespace DDDCore\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 /**
  * @class RouteServiceProvider
@@ -18,4 +19,14 @@ class RouteServiceProvider extends ServiceProvider
      * @var string|null
      */
     protected $namespace = 'App\\Interfaces\\Http\\Controllers';
+
+    /**
+     * Define the routes for the application.
+     *
+     * @return void
+     */
+    public function map():void
+    {
+        Route::namespace($this->namespace);
+    }
 }
