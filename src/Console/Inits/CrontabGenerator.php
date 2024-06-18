@@ -5,30 +5,29 @@ namespace DDDCore\Console\Inits;
 use DDDCore\Libraries\Prettus\Generator;
 
 /**
- * @class HandlerGenerator
+ * @class CrontabGenerator
  * @package DDDCore\Console\Inits
  */
-class HandlerGenerator extends Generator
+class CrontabGenerator extends Generator
 {
     /**
      * Get stub name.
      *
      * @var string
      */
-    protected $stub = 'handler';
+    protected $stub = 'console/console/crontab.stub';
 
     /**
      * Create new instance of this class.
      *
-     * @param array $options
+     * @param  array  $options
      */
     public function __construct(array $options = [])
     {
         config([
             'repository.generator.stubsOverridePath' => __dir__,
-            'repository.generator.rootNamespace' => 'App\Exceptions',
+            'repository.generator.rootNamespace'     => ' App\Interfaces\Console',
         ]);
-        $options['name'] = 'Handler';
         parent::__construct($options);
     }
 
@@ -39,7 +38,7 @@ class HandlerGenerator extends Generator
      */
     public function getPathConfigNode(): string
     {
-        return 'app/Exceptions';
+        return 'app/Interfaces/Console/Commands';
     }
 
     /**
@@ -49,6 +48,6 @@ class HandlerGenerator extends Generator
      */
     public function getPath(): string
     {
-        return $this->getBasePath().'/'.$this->getPathConfigNode().'/Handler.php';
+        return $this->getBasePath().'/'.$this->getPathConfigNode().'/'.$this->getName().'Command.php';
     }
 }

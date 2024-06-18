@@ -1,0 +1,32 @@
+<?php
+
+$NAMESPACE$
+
+use DDDCore\Console\Commands\BaseCommand;
+
+/**
+ * @class $CLASS$.
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$ extends BaseCommand
+{
+
+    protected $signature = '$SIGNATURE$';
+
+
+    protected $description = '$DESCRIPTION$';
+
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
+    public function handle()
+    {
+        $this->info()
+    }
+}
+
+
