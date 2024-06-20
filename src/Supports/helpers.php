@@ -59,3 +59,22 @@ if (!function_exists('getHeader')) {
         return $value;
     }
 }
+
+
+if (!function_exists('is_json')) {
+    /**
+     * 判断是否一个字符串是否json
+     *
+     * @param  string  $json
+     * @return bool
+     */
+    function is_json(string $json): bool
+    {
+        try {
+            json_decode($json, false, 512, JSON_THROW_ON_ERROR);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+}
