@@ -3,6 +3,7 @@
 namespace DDDCore\Console\Commands;
 
 use DDDCore\Console\Inits\HandlerGenerator;
+use DDDCore\Console\Inits\RouteServiceProviderGenerator;
 use Prettus\Repository\Generators\FileAlreadyExistsException;
 use RuntimeException;
 
@@ -158,6 +159,34 @@ class InitCommand extends BaseCommand
 
             if (file_exists($handler_file.'.backup')) {
                 unlink($handler_file.'.backup');
+            }
+        }
+    }
+
+    /**
+     * Replace route service
+     *
+     * @return void
+     */
+    private function replaceRouteService():void
+    {
+        $routeService_file = $this->app_path . '/Providers/RouteServiceProvider.php';
+        $handlerText  = file_get_contents($routeService_file);
+        if (file_exists($routeService_file)) {
+            rename($routeService_file, $routeService_file.'.backup');
+        }
+
+        try {
+            (new RouteServiceProviderGenerator())->run();
+        } catch (RuntimeException|FileAlreadyExistsException $exception) {
+            rename($routeService_file.'.backup', $routeService_file);
+        } finally {
+            if (!file_exists($routeService_file)) {
+                file_put_contents($routeService_file, $handlerText);
+            }
+
+            if (file_exists($routeService_file.'.backup')) {
+                unlink($routeService_file.'.backup');
             }
         }
     }
