@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
  * @class AsyncEventListener
  * @package DDDCore\Listeners
  */
-class AsyncEventListener extends EventListener implements ShouldQueue
+abstract class AsyncEventListener extends EventListener implements ShouldQueue
 {
     use InteractsWithQueue;
 

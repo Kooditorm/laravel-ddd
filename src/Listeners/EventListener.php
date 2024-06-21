@@ -8,7 +8,7 @@ use DDDCore\Events\Event;
  * @class EventListener
  * @package DDDCore\Listeners
  */
-class EventListener
+abstract class EventListener
 {
 
     /**
@@ -28,8 +28,5 @@ class EventListener
      * @param  Event  $event
      * @return void
      */
-    public function handle(Event $event): void
-    {
-        //
-    }
+    abstract public function handle(Event $event): void;
 }

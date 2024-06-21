@@ -16,13 +16,26 @@ class Event
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * @var array
+     */
+    public array $data = [];
+
+    /**
+     * @param  array  $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->data = $data;
+    }
+
 
     /**
      * Get the channels the event should broadcast on.
      *
      * @return Channel
      */
-    public function broadcastOn():Channel
+    public function broadcastOn(): Channel
     {
         return new PrivateChannel('channel-name');
     }

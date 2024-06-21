@@ -8,7 +8,7 @@ namespace DDDCore\Listeners;
  * @class SyncEventListener
  * @package DDDCore\Listeners
  */
-class SyncEventListener extends EventListener
+abstract class SyncEventListener extends EventListener
 {
 
 }
