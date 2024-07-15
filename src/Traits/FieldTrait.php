@@ -145,4 +145,31 @@ trait FieldTrait
         return $fields;
 
     }
+
+    /**
+     * get string Between
+     *
+     * @param $kw
+     * @param ...$mark
+     * @return string
+     */
+    protected function getStrBetween($kw, ...$mark): string
+    {
+        if (in_array(count($mark), [1, 2], true)) {
+            $st = stripos($kw, $mark[0]);
+            $mk = strlen($mark[0]);
+            if (count($mark) === 1) {
+                $ed = stripos($kw, $mark[0], $st + $mk);
+            } else {
+                $mk = strlen($mark[1]);
+                $ed = stripos($kw, $mark[1]);
+            }
+
+            if ($st !== false && $ed !== false && $st < $ed) {
+                return substr($kw, ($st), ($ed + $mk - $st));
+            }
+        }
+    }
+
+
 }
