@@ -100,7 +100,6 @@ class GenerateCommand extends Command
 
     private function runCall(array $option = []): void
     {
-        $runCommand = [];
         $commandObj = [];
         $single     = 0;
 
