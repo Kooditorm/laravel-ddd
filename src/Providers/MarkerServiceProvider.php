@@ -4,6 +4,8 @@ namespace DDDCore\Providers;
 
 use DDDCore\Console\Makers\DTOCommand;
 use DDDCore\Console\Makers\GenerateCommand;
+use DDDCore\Console\Makers\RepositoryCommand;
+use DDDCore\Console\Makers\ServiceCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,9 +21,11 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
      * @var string[]
      */
     protected array $commands = [
-        'Gen'      => 'command.marker.gen',
-        'Generate' => 'command.marker.generate',
-        "DTO"      => "command.marker.dto"
+        'Gen'        => 'command.marker.gen',
+        'Generate'   => 'command.marker.generate',
+        'DTO'        => 'command.marker.dto',
+        'Repository' => 'command.marker.repository',
+        'Service'    => 'command.marker.service'
     ];
 
 
@@ -76,14 +80,41 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
         });
     }
 
-    private function registerDTOCommand():void
+    /**
+     * Register dto command.
+     *
+     * @return void
+     */
+    private function registerDTOCommand(): void
     {
         $this->app->singleton('command.marker.dto', function () {
             return new DTOCommand();
         });
     }
 
+    /**
+     * Register repository command.
+     *
+     * @return void
+     */
+    private function registerRepositoryCommand(): void
+    {
+        $this->app->singleton('command.marker.repository', function () {
+            return new RepositoryCommand();
+        });
+    }
 
+    /**
+     * Register service command.
+     *
+     * @return void
+     */
+    private function registerServiceCommand(): void
+    {
+        $this->app->singleton('command.marker.service', function () {
+            return new ServiceCommand();
+        });
+    }
 
 
     /**
