@@ -2,10 +2,15 @@
 
 namespace DDDCore\Providers;
 
+use DDDCore\Console\Makers\ConstantCommand;
 use DDDCore\Console\Makers\DTOCommand;
+use DDDCore\Console\Makers\ExceptionCommand;
 use DDDCore\Console\Makers\GenerateCommand;
+use DDDCore\Console\Makers\ListenerCommand;
+use DDDCore\Console\Makers\ProxyCommand;
 use DDDCore\Console\Makers\RepositoryCommand;
 use DDDCore\Console\Makers\ServiceCommand;
+use DDDCore\Console\Makers\ValidatorCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +30,13 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
         'Generate'   => 'command.marker.generate',
         'DTO'        => 'command.marker.dto',
         'Repository' => 'command.marker.repository',
-        'Service'    => 'command.marker.service'
+        'Service'    => 'command.marker.service',
+        'Validator'  => 'command.marker.validator',
+        'Listener'   => 'command.marker.listener',
+        'Constant'   => 'command.marker.constant',
+        'Exception'  => 'command.marker.exception',
+        'Proxy'      => 'command.marker.proxy'
+
     ];
 
 
@@ -116,6 +127,65 @@ class MarkerServiceProvider extends ServiceProvider implements DeferrableProvide
         });
     }
 
+    /**
+     * Register validator command.
+     *
+     * @return void
+     */
+    private function registerValidatorCommand(): void
+    {
+        $this->app->singleton('command.marker.validator', function () {
+            return new ValidatorCommand();
+        });
+    }
+
+    /**
+     * Register listener command.
+     *
+     * @return void
+     */
+    private function registerListenerCommand(): void
+    {
+        $this->app->singleton('command.marker.listener', function () {
+            return new ListenerCommand();
+        });
+    }
+
+    /**
+     * Register constant command.
+     *
+     * @return void
+     */
+    private function registerConstantCommand(): void
+    {
+        $this->app->singleton('command.marker.constant', function () {
+            return new ConstantCommand();
+        });
+    }
+
+    /**
+     * Register exception command.
+     *
+     * @return void
+     */
+    private function registerExceptionCommand(): void
+    {
+        $this->app->singleton('command.marker.exception', function () {
+            return new ExceptionCommand();
+        });
+    }
+
+    /**
+     * Register proxy command.
+     *
+     * @return void
+     */
+    private function registerProxyCommand(): void
+    {
+        $this->app->singleton('command.marker.proxy', function () {
+            return new ProxyCommand();
+        });
+    }
 
     /**
      * Get the services provided by the provider.

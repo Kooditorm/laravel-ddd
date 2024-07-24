@@ -2,26 +2,32 @@
 
 namespace DDDCore\Console\Makers;
 
-
 /**
- * @class ServiceCommand
+ * @class ListenerCommand
  * @package DDDCore\Console\Makers
  */
-class ServiceCommand extends MakerCommand
+class ListenerCommand extends MakerCommand
 {
     /**
      * The name of command.
      *
      * @var string
      */
-    protected $name = 'gen:service';
+    protected $name = 'gen:Listener';
 
     /**
      * The description of command.
      *
      * @var string
      */
-    protected $description = 'Create a new Service.';
+    protected $description = 'Create a new Listener.';
+
+    /**
+     * @inheritDoc
+     *
+     * @var bool
+     */
+    protected bool $single = true;
 
     /**
      * Execute the command.

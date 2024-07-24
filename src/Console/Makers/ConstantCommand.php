@@ -2,26 +2,32 @@
 
 namespace DDDCore\Console\Makers;
 
-
 /**
- * @class ServiceCommand
+ * @class ConstantCommand
  * @package DDDCore\Console\Makers
  */
-class ServiceCommand extends MakerCommand
+class ConstantCommand extends MakerCommand
 {
     /**
      * The name of command.
      *
      * @var string
      */
-    protected $name = 'gen:service';
+    protected $name = 'gen:Constant';
 
     /**
      * The description of command.
      *
      * @var string
      */
-    protected $description = 'Create a new Service.';
+    protected $description = 'Create a new Constant.';
+
+    /**
+     * @inheritDoc
+     *
+     * @var bool
+     */
+    protected bool $single = true;
 
     /**
      * Execute the command.
@@ -39,7 +45,7 @@ class ServiceCommand extends MakerCommand
      *
      * @return void
      */
-    public function fire(): void
+    public function fire():void
     {
 
     }

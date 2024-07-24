@@ -2,26 +2,25 @@
 
 namespace DDDCore\Console\Makers;
 
-
 /**
- * @class ServiceCommand
+ * @class ValidatorCommand
  * @package DDDCore\Console\Makers
  */
-class ServiceCommand extends MakerCommand
+class ValidatorCommand extends MakerCommand
 {
     /**
      * The name of command.
      *
      * @var string
      */
-    protected $name = 'gen:service';
+    protected $name = 'gen:validator';
 
     /**
      * The description of command.
      *
      * @var string
      */
-    protected $description = 'Create a new Service.';
+    protected $description = 'Create a new Validator.';
 
     /**
      * Execute the command.

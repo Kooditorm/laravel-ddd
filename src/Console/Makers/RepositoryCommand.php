@@ -2,6 +2,10 @@
 
 namespace DDDCore\Console\Makers;
 
+/**
+ * @class RepositoryCommand
+ * @package DDDCore\Console\Makers
+ */
 class RepositoryCommand extends MakerCommand
 {
     /**

@@ -26,6 +26,13 @@ class MakerCommand extends Command
         return $this->single;
     }
 
+    /**
+     * 领域文件生成提示
+     *
+     * @param  Exception|null  $e
+     * @param  string  $name
+     * @return void
+     */
     protected function tips(?Exception $e = null, string $name = ''): void
     {
         if (empty($name)){
