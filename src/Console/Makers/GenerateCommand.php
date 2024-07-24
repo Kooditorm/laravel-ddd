@@ -25,7 +25,7 @@ class GenerateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'automatically generate project files';
+    protected $description = 'create generate project files';
 
     /**
      * The filesystem instance.
