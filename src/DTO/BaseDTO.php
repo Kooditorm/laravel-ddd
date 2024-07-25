@@ -24,8 +24,43 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
 {
     use HasAttributes;
 
+    /**
+     * 默认接受参数
+     * @var array|string[]
+     */
+    protected array $commonFields = ['id', 'keyword', 'page', 'limit'];
+
+    /**
+     * 接受参数
+     * @var array
+     */
+    public array $accessFields = [];
+
+    /**
+    /**
+     * 过滤验证接口
+     * @var array|string[]
+     */
+    public array $skipValidator = [];
+
+    /**
+     * 是否验证
+     *
+     * @var bool
+     */
+    private bool $isValidator = true;
+
     /** @var Request $request */
     private Request $request;
+
+
+
+    /**
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
+    abstract public function validator();
 
     public function __construct()
     {
