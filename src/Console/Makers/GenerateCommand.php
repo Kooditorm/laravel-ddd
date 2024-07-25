@@ -38,7 +38,14 @@ class GenerateCommand extends Command
      * @var array
      */
     protected array $register = [
-        DTOCommand::class
+        DTOCommand::class,
+        RepositoryCommand::class,
+        ServiceCommand::class,
+        ValidatorCommand::class,
+        ListenerCommand::class,
+        ConstantCommand::class,
+        ExceptionCommand::class,
+        ProxyCommand::class
     ];
 
 
