@@ -169,6 +169,7 @@ trait FieldTrait
                 return substr($kw, ($st), ($ed + $mk - $st));
             }
         }
+        return $kw;
     }
 
 
