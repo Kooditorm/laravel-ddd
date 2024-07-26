@@ -34,14 +34,20 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
      * 接受参数
      * @var array
      */
-    public array $accessFields = [];
+    protected array $accessFields = [];
 
     /**
     /**
      * 过滤验证接口
      * @var array|string[]
      */
-    public array $skipValidator = [];
+    protected array $skipValidator = [];
+
+    /**
+     * @var LaravelValidator
+     */
+    protected LaravelValidator $validator;
+
 
     /**
      * 是否验证
