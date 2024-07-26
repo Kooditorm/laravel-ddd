@@ -1,0 +1,21 @@
+<?php
+$NAMESPACE$
+
+use $PATH$Entities\$CLASS$;
+use $PATH$Repositories\$CLASS$Repository;
+use DDDCore\Repositories\BaseRepository;
+
+/**
+ * @Class $CLASS$Repository
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$Repository extends BaseRepository
+{
+    /**
+     * @inheritDoc
+     */
+    public function model(): string
+    {
+        return $CLASS$::class;
+    }
+}

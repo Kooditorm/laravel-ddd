@@ -2,9 +2,10 @@
 
 namespace DDDCore\Console\Makers;
 
+use DDDCore\Console\Makers\Generator\ModelGenerator;
+use DDDCore\Console\Makers\Generator\RepositoryGenerator;
 use Exception;
 use Illuminate\Support\Collection;
-use DDDCore\Console\Makers\Generator\ModelGenerator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -51,10 +52,10 @@ class RepositoryCommand extends MakerCommand
      *
      * @return void
      */
-    public function fire():void
+    public function fire(): void
     {
         $generators = new Collection();
-        try{
+        try {
             $modelGenerator = new ModelGenerator([
                 'name'     => $this->argument('name'),
                 'action'   => $this->argument('action'),
@@ -65,7 +66,25 @@ class RepositoryCommand extends MakerCommand
             if (!$this->option('skip-model')) {
                 $generators->push($modelGenerator);
             }
-        }catch (Exception $e){
+
+            $model = $modelGenerator->getRootNamespace().'\\'.$modelGenerator->getName();
+            $model = str_replace(["\\", '/'], '\\', $model);
+
+            (new RepositoryGenerator([
+                'name'      => $this->argument('name'),
+                'action'    => $this->argument('action'),
+                'rules'     => $this->option('rules'),
+                'validator' => $this->option('validator'),
+                'force'     => $this->option('force'),
+                'model'     => $model
+            ]))->run();
+
+            foreach ($generators as $generator) {
+                $generator->run();
+            }
+
+            $this->tips();
+        } catch (Exception $e) {
             $this->tips($e);
         }
     }
