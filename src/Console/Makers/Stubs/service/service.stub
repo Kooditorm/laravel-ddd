@@ -1,0 +1,20 @@
+<?php
+$NAMESPACE$
+
+use $PATH$DTO\$CLASS$DTO;
+use $PATH$Repositories\$CLASS$Repository;
+use $PATH$Services\$CLASS$Service;
+use use DDDCore\Services\BaseService;
+
+/**
+ * @Class $CLASS$ServiceImpl
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$Service extends BaseService
+{
+
+    public function __construct($CLASS$Repository $repository,  $CLASS$DTO $dto)
+    {
+        parent::__construct($repository, $dto);
+    }
+}

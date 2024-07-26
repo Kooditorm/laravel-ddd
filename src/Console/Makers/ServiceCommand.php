@@ -3,6 +3,11 @@
 namespace DDDCore\Console\Makers;
 
 
+use DDDCore\Console\Makers\Generator\ServiceGenerator;
+use Exception;
+use Illuminate\Support\Collection;
+use Symfony\Component\Console\Input\InputArgument;
+
 /**
  * @class ServiceCommand
  * @package DDDCore\Console\Makers
@@ -41,6 +46,37 @@ class ServiceCommand extends MakerCommand
      */
     public function fire(): void
     {
+        try {
+            (new ServiceGenerator([
+                'name' => $this->argument('name'),
+                'action' => $this->argument('action')
+            ]))->run();
+            $this->tips();
+        }catch (Exception $e) {
+            $this->tips($e);
+        }
+    }
 
+    /**
+     * The array of command arguments.
+     *
+     * @return array
+     */
+    public function getArguments(): array
+    {
+        return [
+            [
+                'name',
+                InputArgument::REQUIRED,
+                'The name of class being generated.',
+                null
+            ],
+            [
+                'action',
+                InputArgument::REQUIRED,
+                'Operating on this type of action.',
+                null
+            ],
+        ];
     }
 }
