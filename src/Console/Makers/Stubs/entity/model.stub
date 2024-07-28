@@ -2,7 +2,7 @@
 
 $NAMESPACE$
 
-use DDDCore\Entities\BaseEntity
+use DDDCore\Entities\BaseEntity;
 
 /**
  * @class $CLASS$.
