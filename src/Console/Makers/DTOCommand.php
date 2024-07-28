@@ -2,6 +2,7 @@
 
 namespace DDDCore\Console\Makers;
 
+use DDDCore\Console\Makers\Generator\DTOGenerator;
 use Exception;
 use Symfony\Component\Console\Input\InputArgument;
 
