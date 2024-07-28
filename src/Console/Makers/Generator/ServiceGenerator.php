@@ -45,7 +45,7 @@ class ServiceGenerator extends Generator
      */
     public function getPath(): string
     {
-        return $this->getBasePath().'/'.$this->getPathConfigNode().'/Impl/'.$this->getName().'ServiceImpl.php';
+        return $this->getBasePath().DIRECTORY_SEPARATOR.$this->getPathConfigNode().DIRECTORY_SEPARATOR.$this->getName().'Service.php';
     }
 
     /**

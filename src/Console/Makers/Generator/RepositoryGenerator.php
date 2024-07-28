@@ -44,7 +44,7 @@ class RepositoryGenerator extends Generator
      */
     public function getPath(): string
     {
-        return  $this->getBasePath().'/'.$this->getConfigGeneratorClassPath($this->getPathConfigNode(), true).$this->getName().'Repository.php';
+        return  $this->getBasePath().DIRECTORY_SEPARATOR.$this->getConfigGeneratorClassPath($this->getPathConfigNode(), true).DIRECTORY_SEPARATOR.$this->getName().'Repository.php';
     }
 
     /**

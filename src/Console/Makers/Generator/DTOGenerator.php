@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDCore\Console\Makers;
+namespace DDDCore\Console\Makers\Generator;
 
 use DDDCore\Libraries\Prettus\Generator;
 
@@ -34,7 +34,7 @@ class DTOGenerator extends Generator
      */
     public function getPath(): string
     {
-        return $this->getBasePath().'/'.$this->getPathConfigNode().'/'.$this->getName().'DTO.php';
+        return $this->getBasePath().DIRECTORY_SEPARATOR.$this->getPathConfigNode().DIRECTORY_SEPARATOR.$this->getName().'DTO.php';
     }
 
     /**

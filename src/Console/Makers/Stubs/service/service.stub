@@ -3,8 +3,7 @@ $NAMESPACE$
 
 use $PATH$DTO\$CLASS$DTO;
 use $PATH$Repositories\$CLASS$Repository;
-use $PATH$Services\$CLASS$Service;
-use use DDDCore\Services\BaseService;
+use DDDCore\Services\BaseService;
 
 /**
  * @Class $CLASS$ServiceImpl

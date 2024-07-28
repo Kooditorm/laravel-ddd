@@ -1,0 +1,33 @@
+<?php
+
+$NAMESPACE$
+
+use $PATH$Validators\$CLASS$Validator;
+use DDDCore\DTO\BaseDTO;
+
+/**
+ * @Class $CLASS$DTO
+ * @package $ROOT_NAMESPACE$
+ */
+class $CLASS$DTO extends BaseDTO
+{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = ['discount_data'=>'json','order_type'=>'json'];
+
+
+    /**
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
+    public function validator(): string
+    {
+        return $CLASS$Validator::class;
+    }
+
+
+}
