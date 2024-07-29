@@ -1,0 +1,43 @@
+<?php
+$NAMESPACE$
+
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\LaravelValidator;
+use DDDCore\Validators\Validators
+
+/**
+ * @Class $CLASS$Validator
+ *
+ * @package  $ROOT_NAMESPACE$
+ */
+class $CLASS$Validator extends Validators
+{
+
+    use ValidatorTrait;
+
+    public array $fields=$RULES$;
+
+    /**
+     * Validation Rules
+     *
+     * @var array
+     */
+    protected $rules = [
+        ValidatorInterface::RULE_CREATE => [],
+        ValidatorInterface::RULE_UPDATE => [],
+    ];
+
+    /**
+     * Validation Custom Messages
+     *
+     * @var array
+     */
+    protected $messages = [];
+
+    /**
+     * Validation Custom Attributes
+     *
+     * @var array
+     */
+    protected $attributes = [];
+}
