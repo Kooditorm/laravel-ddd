@@ -64,12 +64,12 @@ class ValidatorGenerator extends Generator
     public function getReplacements(): array
     {
         return array_merge(parent::getReplacements(), [
-            'rules' => $this->getRules()
+            'rules' => $this->getFields()
         ]);
     }
 
     public function replace(): string
     {
-        return $this->getRules();
+        return $this->getFields();
     }
 }
