@@ -2,7 +2,6 @@
 $NAMESPACE$
 
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\LaravelValidator;
 use DDDCore\Validators\Validators
 
 /**
@@ -12,8 +11,6 @@ use DDDCore\Validators\Validators
  */
 class $CLASS$Validator extends Validators
 {
-
-    use ValidatorTrait;
 
     public array $fields=$RULES$;
 
