@@ -1,0 +1,13 @@
+<?php
+$NAMESPACE$
+
+use DDDCore\Constants\ErrorCodeConstant;
+
+/**
+ * @Class $DOMAIN$ErrorConstant
+ * @package $ROOT_NAMESPACE$
+ */
+class $DOMAIN$ErrorConstant extends ErrorCodeConstant
+{
+
+}

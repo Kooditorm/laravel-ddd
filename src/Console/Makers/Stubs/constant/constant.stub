@@ -1,0 +1,13 @@
+<?php
+$NAMESPACE$
+
+use DDDCore\Constants\Constant;
+
+/**
+ * @Class $DOMAIN$Constant
+ * @package $ROOT_NAMESPACE$
+ */
+class $DOMAIN$Constant extends Constant
+{
+
+}

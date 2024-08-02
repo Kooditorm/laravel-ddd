@@ -43,7 +43,7 @@ class GenerateCommand extends Command
         ServiceCommand::class,
         ValidatorCommand::class,
         ListenerCommand::class,
-//        ConstantCommand::class,
+        ConstantCommand::class,
 //        ExceptionCommand::class,
 //        ProxyCommand::class
     ];
