@@ -1,0 +1,13 @@
+<?php
+$NAMESPACE$
+
+use DDDCore\Listeners\AsyncEventListener;
+
+/**
+ * @Class $DOMAIN$AsyncListener
+ * @package $ROOT_NAMESPACE$
+ */
+class $DOMAIN$AsyncListener extends AsyncEventListener
+{
+
+}

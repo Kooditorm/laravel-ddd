@@ -3,23 +3,13 @@
 namespace DDDCore\Console\Makers\Generator;
 
 use DDDCore\Libraries\Prettus\Generator;
-use DDDCore\Traits\FieldTrait;
 
 /**
- * @class ValidatorGenerator
+ * @class ListenerGenerator
  * @package DDDCore\Console\Makers\Generator
  */
-class ValidatorGenerator extends Generator
+abstract class ListenerGenerator extends Generator
 {
-    use FieldTrait;
-
-    /**
-     * Get stub name.
-     *
-     * @var string
-     */
-    protected $stub = 'validator/validator';
-
     /**
      * Get generator path config node.
      *
@@ -27,17 +17,7 @@ class ValidatorGenerator extends Generator
      */
     public function getPathConfigNode(): string
     {
-        return 'Validators';
-    }
-
-    /**
-     * Get destination path for generated file.
-     *
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return $this->getBasePath().'/'.$this->getPathConfigNode().'/'.$this->getName().'Validator.php';
+        return 'Listeners';
     }
 
     /**
@@ -68,12 +48,12 @@ class ValidatorGenerator extends Generator
     public function getReplacements(): array
     {
         return array_merge(parent::getReplacements(), [
-            'rules' => $this->getFields()
+            'domain' => config('repository.generator.inputPath')
         ]);
     }
 
-    public function replace(): string
+    public function run()
     {
-        return $this->getFields();
+        return $this->onlyRun();
     }
 }

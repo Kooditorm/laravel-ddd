@@ -1,0 +1,13 @@
+<?php
+$NAMESPACE$
+
+use DDDCore\Listeners\SyncEventListener;
+
+/**
+ * @Class $DOMAIN$SyncListener
+ * @package $ROOT_NAMESPACE$
+ */
+class $DOMAIN$SyncListener extends SyncEventListener
+{
+
+}
