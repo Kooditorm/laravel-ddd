@@ -2,7 +2,7 @@
 $NAMESPACE$
 
 use Prettus\Validator\Contracts\ValidatorInterface;
-use DDDCore\Validators\Validators
+use DDDCore\Validators\Validators;
 
 /**
  * @Class $CLASS$Validator
