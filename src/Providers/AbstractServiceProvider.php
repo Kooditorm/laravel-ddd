@@ -2,9 +2,9 @@
 
 namespace DDDCore\Providers;
 
-use DDDCore\Facades\TraceChainId;
 use DDDCore\Middleware\LogsMiddleware;
 use DDDCore\Supports\JWT;
+use DDDCore\Supports\TraceLog\TraceChainUnId;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 
@@ -67,7 +67,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
     protected function registerTraceChainIdProvider(): void
     {
         $this->app->singleton('TraceChainId', function () {
-            return new TraceChainId();
+            return new TraceChainUnId();
         });
     }
 
