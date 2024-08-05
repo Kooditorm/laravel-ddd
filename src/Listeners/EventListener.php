@@ -20,13 +20,4 @@ abstract class EventListener
     {
         //
     }
-
-
-    /**
-     * Handle the event.
-     *
-     * @param  Event  $event
-     * @return void
-     */
-    abstract public function handle(Event $event): void;
 }
