@@ -20,7 +20,16 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
      */
     public function boot(): void
     {
-        $path = dirname(__DIR__, 2);
+        $confPath =  dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'config';
+        $path = [
+            $confPath.DIRECTORY_SEPARATOR.'listen.php' => config_path('listen.php'),
+        ];
+        $this->publishes($path, 'config');
+        foreach ($path as $k => $p) {
+            [$p, $suffix] = explode('.', basename($p));
+            $this->mergeConfigFrom($k, $p);
+        }
+
         $this->DBListen();
     }
 
