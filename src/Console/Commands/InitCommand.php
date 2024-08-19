@@ -4,6 +4,7 @@ namespace DDDCore\Console\Commands;
 
 use DDDCore\Console\Inits\HandlerGenerator;
 use DDDCore\Console\Inits\RouteServiceProviderGenerator;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Prettus\Repository\Generators\FileAlreadyExistsException;
 use RuntimeException;
 
@@ -53,6 +54,7 @@ class InitCommand extends BaseCommand
     /**
      * @inheritDoc
      * @return void
+     * @throws FileNotFoundException
      */
     public function handle(): void
     {
@@ -64,6 +66,7 @@ class InitCommand extends BaseCommand
      * Initialize system architecture
      *
      * @return void
+     * @throws FileNotFoundException
      */
     private function init(): void
     {
@@ -76,6 +79,7 @@ class InitCommand extends BaseCommand
      * Build configuration.
      *
      * @return void
+     * @throws FileNotFoundException
      */
     private function buildConfiguration(): void
     {
@@ -140,6 +144,7 @@ class InitCommand extends BaseCommand
      * Replace handler Exception
      *
      * @return void
+     * @throws FileNotFoundException
      */
     private function replaceHandler():void
     {

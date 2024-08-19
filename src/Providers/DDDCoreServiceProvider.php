@@ -2,6 +2,7 @@
 
 namespace DDDCore\Providers;
 
+use DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -19,6 +20,7 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
      */
     public function boot(): void
     {
+        $path = dirname(__DIR__, 2);
         $this->DBListen();
     }
 
@@ -34,7 +36,7 @@ class DDDCoreServiceProvider extends AbstractServiceProvider
             $bindings = $query->bindings;
             $time     = $query->time;
             foreach ($bindings as $k => $binding) {
-                if ($binding instanceof \DateTime) {
+                if ($binding instanceof DateTime) {
                     $bindings[$k] = $binding->format('Y-m-d H:i:s');
                 } elseif (is_string($binding)) {
                     $bindings[$k] = "'$binding'";
