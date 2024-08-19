@@ -4,6 +4,7 @@ namespace DDDCore\Middleware;
 
 use Closure;
 use DateTime;
+use DDDCore\Events\LogEvent;
 use DDDCore\Facades\TraceChainId;
 use Illuminate\Http\Request;
 use JsonException;
@@ -40,7 +41,7 @@ class LogsMiddleware
         $response    = $callable($request);
         $finish      = new DateTime();
         $textContext = array_merge_recursive($this->getRequest($request), $this->getResponse($response), $this->getTrace());
-//        event(new LogEvent([$begin, $finish, $textContext]));
+        event(new LogEvent([$begin, $finish, $textContext]));
         return $response;
     }
 
