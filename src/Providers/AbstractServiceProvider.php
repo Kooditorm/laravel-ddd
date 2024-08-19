@@ -5,7 +5,7 @@ namespace DDDCore\Providers;
 use DDDCore\Middleware\LogsMiddleware;
 use DDDCore\Supports\JWT;
 use DDDCore\Supports\TraceLog\TraceChainUnId;
-use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 
 /**
