@@ -17,6 +17,17 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [];
 
+
+    public function register(): void
+    {
+        $event = config('event', []);
+        print_r($event);
+        if (empty($event)) {
+            $this->listen = $event;
+        }
+        parent::register();
+    }
+
     /**
      * Register any events for your application.
      *
@@ -24,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $event = config('event',[]);
+        $event = config('event', []);
         if (empty($event)) {
             $this->listen = $event;
         }
