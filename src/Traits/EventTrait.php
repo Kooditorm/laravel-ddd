@@ -15,7 +15,8 @@ trait EventTrait
      */
     public function listens(): array
     {
-        return $this->listen;
+        $listen = config('listen', []);
+        return array_merge($this->listen, $listen);
     }
 
     /**
