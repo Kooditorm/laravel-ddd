@@ -2,10 +2,14 @@
 
 namespace DDDCore\Providers;
 
+use DDDCore\Events\LogEvent;
+use DDDCore\Listeners\LogListener;
 use DDDCore\Middleware\LogsMiddleware;
 use DDDCore\Supports\JWT;
 use DDDCore\Supports\TraceLog\TraceChainUnId;
+use DDDCore\Traits\EventTrait;
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -14,6 +18,7 @@ use Illuminate\Support\ServiceProvider;
  */
 abstract class AbstractServiceProvider extends ServiceProvider
 {
+    use EventTrait;
 
     /**
      * The application's global HTTP middleware stack.
@@ -36,6 +41,24 @@ abstract class AbstractServiceProvider extends ServiceProvider
     protected array $routeMiddleware = [];
 
     /**
+     * The event handler mappings for the application.
+     *
+     * @var array
+     */
+    protected array $listen = [
+        LogEvent::class => [
+            LogListener::class
+        ]
+    ];
+
+    /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected array $subscribe = [];
+
+    /**
      * Boot the service provider.
      *
      * @return void
@@ -52,6 +75,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
         $this->registerJwtProvider();
         $this->registerTraceChainIdProvider();
         $this->registerMiddleware();
+        $this->registerEvent();
     }
 
     /**
@@ -92,6 +116,28 @@ abstract class AbstractServiceProvider extends ServiceProvider
         foreach ($this->routeMiddleware as $alias => $middleware) {
             $router->$method($alias, $middleware);
         }
+    }
+
+    /**
+     * Register the event.
+     *
+     * @return void
+     */
+    protected function registerEvent(): void
+    {
+        $this->booting(function () {
+            $events = $this->getEvents();
+
+            foreach ($events as $event => $listeners) {
+                foreach (array_unique($listeners) as $listener) {
+                    Event::listen($event, $listener);
+                }
+            }
+
+            foreach ($this->subscribe as $subscriber) {
+                Event::subscribe($subscriber);
+            }
+        });
     }
 
 }
