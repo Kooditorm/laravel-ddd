@@ -78,3 +78,18 @@ if (!function_exists('is_json')) {
         }
     }
 }
+
+
+if(function_exists('is_list')) {
+    /**
+     * 判断数组是否列表结构
+     *
+     * @param  array  $data
+     * @return bool
+     */
+    function is_list(array $data): bool
+    {
+        return array_keys($data) === range(0, count($data) - 1);
+    }
+}
+
