@@ -9,9 +9,8 @@ class MainVo extends BaseVo
         return [];
     }
 
-
     public function getFilterFields(): array
     {
-        return ['id'];
+        return [];
     }
 }
