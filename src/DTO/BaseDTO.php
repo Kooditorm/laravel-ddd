@@ -10,10 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use JsonException;
 use JsonSerializable;
+use Prettus\Validator\Exceptions\ValidatorException;
 use Prettus\Validator\LaravelValidator;
-use ReflectionClass;
 use ReflectionException;
-use ReflectionNamedType;
 
 
 /**
@@ -37,7 +36,7 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
     protected array $accessFields = [];
 
     /**
-    /**
+     * /**
      * 过滤验证接口
      * @var array|string[]
      */
@@ -47,7 +46,6 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
      * @var LaravelValidator
      */
     protected LaravelValidator $validator;
-
 
     /**
      * 是否验证
@@ -60,7 +58,6 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
     private Request $request;
 
 
-
     /**
      * Specify Validator class name
      *
@@ -68,6 +65,9 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
      */
     abstract public function validator();
 
+    /**
+     * @throws ValidatorException
+     */
     public function __construct()
     {
         $this->request    = app(Request::class);
@@ -75,44 +75,115 @@ abstract class BaseDTO implements Jsonable, Arrayable, ArrayAccess, JsonSerializ
         $this->init();
     }
 
+    /**
+     * 接受数据并验证
+     *
+     * @return void
+     * @throws ValidatorException
+     */
     private function init(): void
     {
         $data = $this->request->all();
 
+        $action = $this->getAction();
+
+        $this->accessFields = $this->getAccessFields($action);
+
+        $this->validator = is_string($this->validator()) ? app($this->validator()) : $this->validator();
+
         if (!empty($data)) {
-            collect($data)->each(function ($value, $key) {
-                $this->setAttribute($key, $value);
+            $enableData = collect($data)->filter(function ($val, $key) {
+                return !empty($this->accessFields) && in_array($key, $this->accessFields, true);
+            })->toArray();
+
+            collect($enableData)->map(function ($val, $key) {
+                $this->setAttribute($key, $val);
             });
         }
+
+        //接口调整验证
+        $skipValidator = $this->skipValidator;
+        if (method_exists($this, 'skipValidator')) {
+            $skipValidator = array_merge($this->skipValidator, $this->skipValidator());
+        }
+        if ($this->isValidator === true && (!empty($action) && in_array($action, $skipValidator, true) === false)) {
+            $this->validator->with($this->getAttributes())->passesOrFail($action);
+        }
+
+
     }
+
+    /**
+     * 获取允许执行字段
+     *
+     * @param  string  $action
+     * @return array
+     */
+    public function getAccessFields(string $action = ''): array
+    {
+        if (!empty($action)) {
+            $func = $action.'Fields';
+            if (method_exists($this, $func)) {
+                $this->accessFields = $this->$func();
+            }
+
+            $this->accessFields = array_merge($this->accessFields, $this->commonFields);
+        }
+
+        return $this->accessFields;
+    }
+
+    /**
+     * 设置是否验证
+     *
+     * @param  bool  $isValidator
+     * @return void
+     */
+    public function isValidator(bool $isValidator = true): void
+    {
+        $this->isValidator = $isValidator;
+    }
+
+
+    /**
+     * 获取当前操作
+     *
+     * @return string
+     */
+    private function getAction(): string
+    {
+        return getActions($this->request)['controller'] ?? '';
+    }
+
+
 
     /**
      * @return array
      * @throws ReflectionException
      */
-    private function getAccessFields(): array
-    {
-        $actions = getActions($this->request);
-        if (!empty($actions['controller'])) {
-            $class = new ReflectionClass($actions['controller']);
-            $properties = $class->getProperties();
-
-            if (!empty($properties)) {
-                foreach ($properties as $property) {
-                    $name = $property->getName();
-                    $type = $property->getType();
-
-                    if ($type instanceof ReflectionNamedType) {
-                        $typeName = $type->getName();
-                        echo "Property: $name, Type: $typeName\n";
-                    } else {
-                        echo "Property: $name, Type: unknown\n";
-                    }
-                }
-            }
-        }
-        return [];
-    }
+//    private function getAccessFields(): array
+//    {
+//        $actions = getActions($this->request);
+//        if (!empty($actions['controller'])) {
+//            $class = new ReflectionClass($actions['controller']);
+//            $properties = $class->getProperties();
+//
+//            if (!empty($properties)) {
+//                foreach ($properties as $property) {
+//                    $name = $property->getName();
+//                    $type = $property->getType();
+//
+//                    if ($type instanceof ReflectionNamedType) {
+//                        $typeName = $type->getName();
+//                        echo "Property: $name, Type: $typeName\n";
+//                    } else {
+//                        echo "Property: $name, Type: unknown\n";
+//                    }
+//                }
+//            }
+//        }
+//        return [];
+//    }
 
     /**
      * Dynamically retrieve attributes on the model.
