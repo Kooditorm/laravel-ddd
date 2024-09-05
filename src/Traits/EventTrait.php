@@ -4,7 +4,10 @@ namespace DDDCore\Traits;
 
 use Illuminate\Foundation\Events\DiscoverEvents;
 
-
+/**
+ * @trait EventTrait
+ * @package DDDCore\Traits
+ */
 trait EventTrait
 {
 

@@ -2,6 +2,11 @@
 
 namespace DDDCore\Traits;
 
+
+/**
+ * @trait ScopeTrait
+ * @package DDDCore\Traits
+ */
 trait ScopeTrait
 {
 
