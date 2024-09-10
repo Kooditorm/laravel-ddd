@@ -1,0 +1,28 @@
+<?php
+
+use App\Infrastructure\Libraries\Laravel\Database\Migrations\Migration;
+use App\Infrastructure\Libraries\Laravel\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+
+class {{ class }} extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        //
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+}
