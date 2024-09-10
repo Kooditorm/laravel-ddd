@@ -1,7 +1,7 @@
 <?php
 
-use App\Infrastructure\Libraries\Laravel\Database\Migrations\Migration;
-use App\Infrastructure\Libraries\Laravel\Facades\Schema;
+use DDCore\Libraries\Laravel\Facades\Schema;
+use DDDCore\Libraries\Laravel\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 class {{ class }} extends Migration

@@ -1,6 +1,6 @@
 <?php
 
-namespace DDDCore\Facades;
+namespace DDDCore\Libraries\Laravel\Facades;
 
 use DDDCore\Libraries\Laravel\Database\Schema\Grammars\MySqlGrammar;
 use Illuminate\Support\Facades\Schema as LaravelSchema;
