@@ -172,6 +172,7 @@ class InitCommand extends BaseCommand
      * Replace route service
      *
      * @return void
+     * @throws FileNotFoundException
      */
     private function replaceRouteService():void
     {
@@ -196,37 +197,4 @@ class InitCommand extends BaseCommand
         }
     }
 
-//    /**
-//     * @param $filename
-//     * @param $backupName
-//     * @return void
-//     */
-//    private function backup($filename, $backupName): void
-//    {
-//        if (!file_exists($filename)) {
-//            throw new RuntimeException(sprintf('File "%s" does not exist', $filename));
-//        }
-//
-//        if (!file_exists($backupName) && !mkdir($backupName, 0777, true) && !is_dir($backupName)) {
-//            throw new RuntimeException(sprintf('Directory "%s" was not created', $backupName));
-//        }
-//
-//        $files = scandir($filename);
-//
-//        foreach ($files as $file) {
-//            if ($file === '.' || $file === '..') {
-//                continue;
-//            }
-//
-//            $sourcePath      = $filename.'/'.$file;
-//            $destinationPath = $backupName.'/'.$file;
-//
-//            if (is_dir($sourcePath)) {
-//                $this->backup($sourcePath, $destinationPath);
-//            } else {
-//                copy($sourcePath, $destinationPath);
-//            }
-//        }
-//
-//    }
 }
